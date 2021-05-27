@@ -1,9 +1,9 @@
-Realtor,Website,csv
-Realestate,Realestate.com.au,
-Domain,Domain.com.au,
-Realestate,Realestateview.com.au,
-OnTheHouse,OnTheHouse.com.au,
-AllHomes,AllHomes.com.au,
-Rent,Rent.com.au,
-Property,Property.com.au ,
+Realtor,Website,Listing.csv
+Realestate,https://Realestate.com.au,https://Realestate.com.au/listing.csv
+Domain,https://Domain.com.au,https://Domain.com.au/listing.csv
+Realestate,https://Realestateview.com.au,https://Realestateview.com.au/listing.csv
+OnTheHouse,https://OnTheHouse.com.au,https://OnTheHouse.com.au/listing.csv
+AllHomes,https://AllHomes.com.au,https://AllHomes.com.au/listing.csv
+Rent,https://Rent.com.au,https://Rent.com.au/listing.csv
+Property,https://Property.com.au ,https://Property.com.au/listing.csv
 CITS4407 Realtors,https://raw.githubusercontent.com/ajiacode/exams/master,https://raw.githubusercontent.com/ajiacode/exams/master/listing.csv
