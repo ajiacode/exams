@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>curl - Unix, Linux Command - Tutorialspoint</title>
+<meta charset="utf-8">
+<meta name="description" content="curl - Unix, Linux Command - curl - Transfers data from or to a server, using one of the protocols: HTTP, HTTPS, FTP, FTPS, SCP, SFTP, TFTP, DICT, TELNET, LDAP or FILE. (To transfer multipl"/>
+<meta name="keywords" content="C, C++, Python, Java, HTML, CSS, JavaScript, SQL, PHP, jQuery, XML, DOM, Bootstrap, Tutorials, Articles, Programming, training, learning, quiz, preferences, examples, code"/>
+<link rel="canonical" href="https://www.tutorialspoint.com/unix_commands/curl.htm" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<link rel="stylesheet" href="/themes/css/style-min-v1.css?v=3.1.2.336">
+<script src="/themes/js/script-min-v1.js?v=3.0.2040229"></script>
+<script>
+function printPage() { window.print(); }
+function readCookie(name) {
+     var nameEQ = name + "=";
+     var ca = document.cookie.split(';');
+     for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+     }
+     return null;
+}
+</script>
+<script id="adp1" data-cfasync="false" type="text/javascript">(function(w, d) { var s = d.createElement('script'); s.src = '//cdn.adpushup.com/40046/adpushup.js'; s.type = 'text/javascript'; s.async = true; (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s); })(window, document);</script>
+<script id="adp2" data-cfasync="false" type="text/javascript">(function(w, d) {var cval = readCookie('subscription_purchased');if(cval == '1'){ return; } var s = d.createElement('script'); s.src = '//delivery.adrecover.com/18107/adRecover.js'; s.type = 'text/javascript'; s.async = true; (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s); })(window, document);</script>
+<style>
+.butnn-save a{color:#fff;} .notes_msg{color:green; margin-left:20px; margin-top:15px;}
+.right-menu .mui-btn {
+    background-color:#01adb9;
+}
+a.demo {
+    background:#01adb9;
+}
+li.heading {
+    background:#01adb9;
+}
+.course-box{background:#01adb9}
+.home-intro-sub p{color:#01adb9}
+a.demo{
+   top: 12px;
+   float:right;
+}
+.prettyprint{
+   width: 99%;
+}
+</style>
+</head>
+<body>
+<header id="header">
+<!-- pop-up -->
+<div class="pop-modal overlay-pop popdiv">
+<div class="modal-window small">
+<span class="close" title="close">×</span>
+<div class="pop-content">
+</div>
+<span class="msg" ></span>
+</div>
+</div>
+<div class="wrap_loader">
+<div class="imgLoader"><img src="/videotutorials/images/loader.gif" alt="Tutorialspoint" width="70" height="70"></div>
+</div>
+<input type="hidden" id="vu" name="vu" value="" />
+<!-- pop-up -->
+
+<!-- Top sub-menu Starts Here -->
+<div class="mui-appbar mui-container-fulid top-menu">
+<div class="mui-container">
+<div class="top-menu-item home">
+<a href="https://www.tutorialspoint.com/index.htm" target="_blank" title="TutorialsPoint - Home"><i class="fal fa-home"></i> <span>Home</span></a>
+</div>
+<div class="top-menu-item qa">
+<a href="https://www.tutorialspoint.com/about/about_careers.htm" target="_blank" title="Job @ Tutorials Point"><i class="fa fa-suitcase"></i> <span>Jobs</span></a>
+</div>
+<div class="top-menu-item tools">
+<a href="https://www.tutorialspoint.com/online_dev_tools.htm" target="_blank" title="Tools - Online Development and Testing Tools"><i class="fal fa-cogs"></i> <span>Tools</span></a>
+</div>
+<div class="top-menu-item coding-ground">
+<a href="https://www.tutorialspoint.com/codingground.htm" target="_blank" title="Coding Ground - Free Online IDE and Terminal"><i class="fal fa-code"></i> <span>Coding Ground </span></a> 
+</div>
+<div class="top-menu-item current-affairs">
+<a href="https://www.tutorialspoint.com/current_affairs.htm" target="_blank" title="Daily Current Affairs"><i class="fal fa-layer-plus"></i> <span>Current Affairs</span></a>
+</div>
+<div class="top-menu-item upsc-notes">
+<a href="https://www.tutorialspoint.com/upsc_ias_exams.htm" target="_blank" title="UPSC IAS Exams Notes - TutorialsPoint"><i class="fal fa-user-tie"></i> <span>UPSC Notes</span></a>
+</div>      
+<div class="top-menu-item articles">
+<a href="https://www.tutorialspoint.com/tutor_connect/index.php" target="_blank" title="Top Online Tutors - Tutor Connect"><i class="fal fa-user"></i> <span>Online Tutors</span></a>
+</div>
+<div class="top-menu-item whiteboard">
+<a href="https://www.tutorialspoint.com/whiteboard.htm" target="_blank" title="Free Online Whiteboard"><i class="fal fa-chalkboard"></i> <span>Whiteboard</span></a>
+</div>
+<div class="top-menu-item net-meeting">
+<a href="https://www.tutorialspoint.com/netmeeting.php" target="_blank" title="A free tool for online video conferencing"><i class="fal fa-chalkboard-teacher"></i> <span>Net Meeting</span></a> 
+</div>
+<div class="top-menu-item articles">
+<a href="https://www.tutorix.com" target="_blank" title="Tutorx - The Best Learning App" rel="nofollow"><i class="fal fa-video"></i> <span>Tutorix</span></a> 
+</div>        
+<div class="top-menu-item qa login">
+<a href="/videotutorials/login.php" target="_blank" title="Tutorials Point - Login"><i class="fa fa-sign-in-alt"></i> <span>Login</span></a> 
+</div>        
+<div class="top-menu-item qa login">
+<a href="/videotutorials/subscription.php" target="_blank" title="Paid Package"><i class="fa fa-book-reader"></i> <span>Packages</span></a> 
+</div>        
+<div class="social-menu-item">
+<a href="https://www.facebook.com/tutorialspointindia" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint @ Facebook"><i class="fab fa-facebook-f"></i></a> 
+<a href="https://www.twitter.com/tutorialspoint" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint @ Twitter"><i class="fab fa-twitter"></i></a>
+<a href="https://www.linkedin.com/company/tutorialspoint" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint @ Linkedin"><i class="fab fa-linkedin-in"></i></a>
+<a href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint YouTube"><i class="fab fa-youtube"></i></a>
+</div>        
+</div>
+</div>
+<!-- Top sub-menu Ends Here -->
+<!-- Top main-menu Starts Here -->
+<div class="mui-appbar mui-container-fulid mui--appbar-line-height mui--z1" id="logo-menu">
+<div class="mui-container">
+<div class="left-menu">
+<a href="https://www.tutorialspoint.com/index.htm" title="Tutorialspoint">
+<img class="tp-logo" alt="tutorialspoint" src="/unix/images/logo.png">
+</a>
+<div class="mui-dropdown">
+<a class="mui-btn mui-btn--primary categories" data-mui-toggle="dropdown"><i class="fa fa-th-large"></i> 
+<span>Categories <span class="mui-caret"></span></span></a>            
+<ul class="mui-dropdown__menu cat-menu">
+<li>
+<ul>
+<li><a href="/academic_tutorials.htm"><i class="fa fa-caret-right"></i> Academic Tutorials</a></li>
+<li><a href="/big_data_tutorials.htm"><i class="fa fa-caret-right"></i> Big Data &amp; Analytics </a></li>
+<li><a href="/computer_programming_tutorials.htm"><i class="fa fa-caret-right"></i> Computer Programming </a></li>
+<li><a href="/computer_science_tutorials.htm"><i class="fa fa-caret-right"></i> Computer Science </a></li>
+<li><a href="/database_tutorials.htm"><i class="fa fa-caret-right"></i> Databases </a></li>
+<li><a href="/devops_tutorials.htm"><i class="fa fa-caret-right"></i> DevOps </a></li>
+<li><a href="/digital_marketing_tutorials.htm"><i class="fa fa-caret-right"></i> Digital Marketing </a></li>
+<li><a href="/engineering_tutorials.htm"><i class="fa fa-caret-right"></i> Engineering Tutorials </a></li>
+<li><a href="/upsc_ias_exams.htm"><i class="fa fa-caret-right"></i> Exams Syllabus </a></li>
+<li><a href="/famous_monuments.htm"><i class="fa fa-caret-right"></i> Famous Monuments </a></li>
+<li><a href="/gate_exams_tutorials.htm"><i class="fa fa-caret-right"></i> GATE Exams Tutorials</a></li>
+<li><a href="/latest_technologies.htm"><i class="fa fa-caret-right"></i> Latest Technologies </a></li>
+<li><a href="/machine_learning_tutorials.htm"><i class="fa fa-caret-right"></i> Machine Learning </a></li>
+<li><a href="/mainframe_tutorials.htm"><i class="fa fa-caret-right"></i> Mainframe Development </a></li>
+<li><a href="/management_tutorials.htm"><i class="fa fa-caret-right"></i> Management Tutorials </a></li>
+<li><a href="/maths_tutorials.htm"><i class="fa fa-caret-right"></i> Mathematics Tutorials</a></li>
+<li><a href="/microsoft_technologies_tutorials.htm"><i class="fa fa-caret-right"></i> Microsoft Technologies </a></li>
+<li><a href="/misc_tutorials.htm"><i class="fa fa-caret-right"></i> Misc tutorials </a></li>
+<li><a href="/mobile_development_tutorials.htm"><i class="fa fa-caret-right"></i> Mobile Development </a></li>
+<li><a href="/java_technology_tutorials.htm"><i class="fa fa-caret-right"></i> Java Technologies </a></li>
+<li><a href="/python_technologies_tutorials.htm"><i class="fa fa-caret-right"></i> Python Technologies </a></li>
+<li><a href="/sap_tutorials.htm"><i class="fa fa-caret-right"></i> SAP Tutorials </a></li>
+<li><a href="/scripting_lnaguage_tutorials.htm"><i class="fa fa-caret-right"></i>Programming Scripts </a></li>
+<li><a href="/selected_reading.htm"><i class="fa fa-caret-right"></i> Selected Reading </a></li>
+<li><a href="/software_quality_tutorials.htm"><i class="fa fa-caret-right"></i> Software Quality </a></li>
+<li><a href="/soft_skill_tutorials.htm"><i class="fa fa-caret-right"></i> Soft Skills </a></li>
+<li><a href="/telecom_tutorials.htm"><i class="fa fa-caret-right"></i> Telecom Tutorials </a></li>
+<li><a href="/upsc_ias_exams.htm"><i class="fa fa-caret-right"></i> UPSC IAS Exams </a></li>
+<li><a href="/web_development_tutorials.htm"><i class="fa fa-caret-right"></i> Web Development </a></li>
+<li><a href="/sports_tutorials.htm"><i class="fa fa-caret-right"></i> Sports Tutorials </a></li>
+<li><a href="/xml_technologies_tutorials.htm"><i class="fa fa-caret-right"></i> XML Technologies </a></li>
+<li><a href="/multi_language_tutorials.htm"><i class="fa fa-caret-right"></i> Multi-Language</a></li>
+<li><a href="/questions_and_answers.htm"><i class="fa fa-caret-right"></i> Interview Questions</a></li>
+</ul>
+</li>
+</ul>
+<div class="clear"></div>
+</div> 
+</div>
+<div class="right-menu">
+<div class="toc-toggle">
+<a href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+</div>
+<div class="mobile-search-btn">
+<a href="https://www.tutorialspoint.com/index.htm"><i class="fal fa-search"></i></a>
+</div>
+<div class="search-box">
+<script async src="https://cse.google.com/cse.js?cx=000263362972888060243:yfed6eu421q"></script>
+<div class='gcse-search'></div>
+</div>
+<div class="menu-btn library-btn">
+<a href="https://www.tutorialspoint.com/tutorialslibrary.htm"><i class="fal fa-cubes"></i> <span>Library</span></a>
+</div>
+<div class="menu-btn videos-btn">
+<a href="https://www.tutorialspoint.com/videotutorials/index.php"><i class="fal fa-video"></i> <span>Videos</span></a> 
+</div>
+<div class="menu-btn videos-btn">
+<a href="https://www.tutorialspoint.com/questions/index.php"><i class="fa fa-location-arrow"></i> <span>Q/A</span></a>
+</div>
+<div class="menu-btn ebooks-btn">
+<a href="https://store.tutorialspoint.com"><i class="fal fa-book"></i> <span>eBooks</span></a>
+</div>
+<div class="mui-dropdown">
+<button class="mui-btn mui-btn--primary mobile-menu" data-mui-toggle="dropdown">
+<span class="mui-caret"></span>
+</button>
+<ul class="mui-dropdown__menu">
+<li class="login"><a href="https://www.tutorialspoint.com/videotutorials/login.php"><i class="fal fa-sign-in-alt"></i> <span>Login</span></a></li>
+<li><a href="https://www.tutorialspoint.com/tutorialslibrary.htm"><i class="fal fa-cubes"></i> <span>Library</span></a></li>
+<li><a href="https://www.tutorialspoint.com/videotutorials/index.php"><i class="fal fa-video"></i> <span>Videos</span></a></li>
+<li><a href="https://store.tutorialspoint.com"><i class="fal fa-book"></i> <span>eBooks</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Top main-menu Ends Here -->
+</header>
+<div class="mui-container-fluid content">
+<div class="mui-container">
+<!-- Tutorial ToC Starts Here -->
+<div class="mui-col-md-3 tutorial-toc">
+<div class="mini-logo">
+<img src="/unix/images/unix-mini-logo.jpg" alt="UNIX Tutorial" />
+</div>
+<ul class="toc chapters">
+<li class="heading">Unix Commands Reference</li>
+<li><a target="_top" href="/unix/index.htm">Unix - Tutorial Home</a></li>
+</ul>
+<div id="sidebar" style="max-height: 600px;overflow: scroll;">
+<div id="scroller">
+<ul class="toc chapters">
+<li class="heading">A</li>
+<li><a target="_top" href="/unix_commands/accept.htm">accept</a></li>
+<li><a target="_top" href="/unix_commands/accton.htm">accton</a></li>
+<li><a target="_top" href="/unix_commands/acpid.htm">acpid</a></li>
+<li><a target="_top" href="/unix_commands/addftinfo.htm">addftinfo</a></li>
+<li><a target="_top" href="/unix_commands/addpart.htm">addpart</a></li>
+<li><a target="_top" href="/unix_commands/addr2line.htm">addr2line</a></li>
+<li><a target="_top" href="/unix_commands/adduser.htm">adduser</a></li>
+<li><a target="_top" href="/unix_commands/agetty.htm">agetty</a></li>
+<li><a target="_top" href="/unix_commands/alias.htm">alias</a></li>
+<li><a target="_top" href="/unix_commands/alternatives.htm">alternatives</a></li>
+<li><a target="_top" href="/unix_commands/amtu.htm">amtu</a></li>
+<li><a target="_top" href="/unix_commands/anacron.htm">anacron</a></li>
+<li><a target="_top" href="/unix_commands/animate.htm">animate</a></li>
+<li><a target="_top" href="/unix_commands/anvil.htm">anvil</a></li>
+<li><a target="_top" href="/unix_commands/apachectl.htm">apachectl</a></li>
+<li><a target="_top" href="/unix_commands/apm.htm">apm</a></li>
+<li><a target="_top" href="/unix_commands/apmd.htm">apmd</a></li>
+<li><a target="_top" href="/unix_commands/apmsleep.htm">apmsleep</a></li>
+<li><a target="_top" href="/unix_commands/appletviewer.htm">appletviewer</a></li>
+<li><a target="_top" href="/unix_commands/apropos.htm">apropos</a></li>
+<li><a target="_top" href="/unix_commands/apt.htm">apt</a></li>
+<li><a target="_top" href="/unix_commands/ar.htm">ar</a></li>
+<li><a target="_top" href="/unix_commands/arbitron.htm">arbitron</a></li>
+<li><a target="_top" href="/unix_commands/arch.htm">arch</a></li>
+<li><a target="_top" href="/unix_commands/arp.htm">arp</a></li>
+<li><a target="_top" href="/unix_commands/arping.htm">arping</a></li>
+<li><a target="_top" href="/unix_commands/as.htm">as</a></li>
+<li><a target="_top" href="/unix_commands/aspell.htm">aspell</a></li>
+<li><a target="_top" href="/unix_commands/at.htm">at</a></li>
+<li><a target="_top" href="/unix_commands/atd.htm">atd</a></li>
+<li><a target="_top" href="/unix_commands/atq.htm">atq</a></li>
+<li><a target="_top" href="/unix_commands/atrm.htm">atrm</a></li>
+<li><a target="_top" href="/unix_commands/atrun.htm">atrun</a></li>
+<li><a target="_top" href="/unix_commands/attr.htm">attr</a></li>
+<li><a target="_top" href="/unix_commands/audispd.htm">audispd</a></li>
+<li><a target="_top" href="/unix_commands/auditctl.htm">auditctl</a></li>
+<li><a target="_top" href="/unix_commands/auditd.htm">auditd</a></li>
+<li><a target="_top" href="/unix_commands/aulast.htm">aulast</a></li>
+<li><a target="_top" href="/unix_commands/aulastlog.htm">aulastlog</a></li>
+<li><a target="_top" href="/unix_commands/aureport.htm">aureport</a></li>
+<li><a target="_top" href="/unix_commands/ausearch.htm">ausearch</a></li>
+<li><a target="_top" href="/unix_commands/ausyscall.htm">ausyscall</a></li>
+<li><a target="_top" href="/unix_commands/authconfig.htm">authconfig</a></li>
+<li><a target="_top" href="/unix_commands/autoconf.htm">autoconf</a></li>
+<li><a target="_top" href="/unix_commands/autofs.htm">autofs</a></li>
+<li><a target="_top" href="/unix_commands/automount.htm">automount</a></li>
+<li><a target="_top" href="/unix_commands/autoreconf.htm">autoreconf</a></li>
+<li><a target="_top" href="/unix_commands/autoscan.htm">autoscan</a></li>
+<li><a target="_top" href="/unix_commands/autoupdate.htm">autoupdate</a></li>
+<li><a target="_top" href="/unix_commands/autrace.htm">autrace</a></li>
+<li><a target="_top" href="/unix_commands/avcstat.htm">avcstat</a></li>
+<li><a target="_top" href="/unix_commands/avctrl.htm">avctrl</a></li>
+<li><a target="_top" href="/unix_commands/awk.htm">awk</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">B</li>
+<li><a target="_top" href="/unix_commands/badblocks.htm">badblocks</a></li>
+<li><a target="_top" href="/unix_commands/base64.htm">base64</a></li>
+<li><a target="_top" href="/unix_commands/basename.htm">basename</a></li>
+<li><a target="_top" href="/unix_commands/bash.htm">bash</a></li>
+<li><a target="_top" href="/unix_commands/bashbug.htm">bashbug</a></li>
+<li><a target="_top" href="/unix_commands/batch.htm">batch</a></li>
+<li><a target="_top" href="/unix_commands/bc.htm">bc</a></li>
+<li><a target="_top" href="/unix_commands/bccmd.htm">bccmd</a></li>
+<li><a target="_top" href="/unix_commands/bg.htm">bg</a></li>
+<li><a target="_top" href="/unix_commands/bind.htm">bind</a></li>
+<li><a target="_top" href="/unix_commands/bison.htm">bison</a></li>
+<li><a target="_top" href="/unix_commands/blkid.htm">blkid</a></li>
+<li><a target="_top" href="/unix_commands/blockdev.htm">blockdev</a></li>
+<li><a target="_top" href="/unix_commands/bmp2tiff.htm">bmp2tiff</a></li>
+<li><a target="_top" href="/unix_commands/booleans.htm">booleans</a></li>
+<li><a target="_top" href="/unix_commands/bounce.htm">bounce</a></li>
+<li><a target="_top" href="/unix_commands/break.htm">break</a></li>
+<li><a target="_top" href="/unix_commands/builtin.htm">builtin</a></li>
+<li><a target="_top" href="/unix_commands/builtins.htm">builtins</a></li>
+<li><a target="_top" href="/unix_commands/bunzip2.htm">bunzip2</a></li>
+<li><a target="_top" href="/unix_commands/bzcat.htm">bzcat</a></li>
+<li><a target="_top" href="/unix_commands/bzcmp.htm">bzcmp</a></li>
+<li><a target="_top" href="/unix_commands/bzdiff.htm">bzdiff</a></li>
+<li><a target="_top" href="/unix_commands/bzgrep.htm">bzgrep</a></li>
+<li><a target="_top" href="/unix_commands/bzip2.htm">bzip2</a></li>
+<li><a target="_top" href="/unix_commands/bzless.htm">bzless</a></li>
+<li><a target="_top" href="/unix_commands/bzmore.htm">bzmore</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">C</li>
+<li><a target="_top" href="/unix_commands/c++filt.htm">c++filt</a></li>
+<li><a target="_top" href="/unix_commands/cal.htm">cal</a></li>
+<li><a target="_top" href="/unix_commands/callback.htm">callback</a></li>
+<li><a target="_top" href="/unix_commands/cancel.htm">cancel</a></li>
+<li><a target="_top" href="/unix_commands/case.htm">case</a></li>
+<li><a target="_top" href="/unix_commands/cat.htm">cat</a></li>
+<li><a target="_top" href="/unix_commands/cd.htm">cd</a></li>
+<li><a target="_top" href="/unix_commands/chage.htm">chage</a></li>
+<li><a target="_top" href="/unix_commands/chat.htm">chat</a></li>
+<li><a target="_top" href="/unix_commands/chattr.htm">chattr</a></li>
+<li><a target="_top" href="/unix_commands/chcat.htm">chcat</a></li>
+<li><a target="_top" href="/unix_commands/chcon.htm">chcon</a></li>
+<li><a target="_top" href="/unix_commands/checkmodule.htm">checkmodule</a></li>
+<li><a target="_top" href="/unix_commands/checkpolicy.htm">checkpolicy</a></li>
+<li><a target="_top" href="/unix_commands/chfn.htm">chfn</a></li>
+<li><a target="_top" href="/unix_commands/chgrp.htm">chgrp</a></li>
+<li><a target="_top" href="/unix_commands/chkconfig.htm">chkconfig</a></li>
+<li><a target="_top" href="/unix_commands/chmod.htm">chmod</a></li>
+<li><a target="_top" href="/unix_commands/chown.htm">chown</a></li>
+<li><a target="_top" href="/unix_commands/chpasswd.htm">chpasswd</a></li>
+<li><a target="_top" href="/unix_commands/chroot.htm">chroot</a></li>
+<li><a target="_top" href="/unix_commands/chrt.htm">chrt</a></li>
+<li><a target="_top" href="/unix_commands/chsh.htm">chsh</a></li>
+<li><a target="_top" href="/unix_commands/chvt.htm">chvt</a></li>
+<li><a target="_top" href="/unix_commands/ciphers.htm">ciphers</a></li>
+<li><a target="_top" href="/unix_commands/ciptool.htm">ciptool</a></li>
+<li><a target="_top" href="/unix_commands/cjpeg.htm">cjpeg</a></li>
+<li><a target="_top" href="/unix_commands/cksum.htm">cksum</a></li>
+<li><a target="_top" href="/unix_commands/cleanlinks.htm">cleanlinks</a></li>
+<li><a target="_top" href="/unix_commands/cleanup.htm">cleanup</a></li>
+<li><a target="_top" href="/unix_commands/clear.htm">clear</a></li>
+<li><a target="_top" href="/unix_commands/clockdiff.htm">clockdiff</a></li>
+<li><a target="_top" href="/unix_commands/clusterdb.htm">clusterdb</a></li>
+<li><a target="_top" href="/unix_commands/cmp.htm">cmp</a></li>
+<li><a target="_top" href="/unix_commands/col.htm">col</a></li>
+<li><a target="_top" href="/unix_commands/colcrt.htm">colcrt</a></li>
+<li><a target="_top" href="/unix_commands/colrm.htm">colrm</a></li>
+<li><a target="_top" href="/unix_commands/column.htm">column</a></li>
+<li><a target="_top" href="/unix_commands/combinediff.htm">combinediff</a></li>
+<li><a target="_top" href="/unix_commands/comm.htm">comm</a></li>
+<li><a target="_top" href="/unix_commands/command.htm">command</a></li>
+<li><a target="_top" href="/unix_commands/compare.htm">compare</a></li>
+<li><a target="_top" href="/unix_commands/compgen.htm">compgen</a></li>
+<li><a target="_top" href="/unix_commands/compile_et.htm">compile_et</a></li>
+<li><a target="_top" href="/unix_commands/complete.htm">complete</a></li>
+<li><a target="_top" href="/unix_commands/composite.htm">composite</a></li>
+<li><a target="_top" href="/unix_commands/conjure.htm">conjure</a></li>
+<li><a target="_top" href="/unix_commands/conman.htm">conman</a></li>
+<li><a target="_top" href="/unix_commands/conmand.htm">conmand</a></li>
+<li><a target="_top" href="/unix_commands/continue.htm">continue</a></li>
+<li><a target="_top" href="/unix_commands/convert.htm">convert</a></li>
+<li><a target="_top" href="/unix_commands/convertquota.htm">convertquota</a></li>
+<li><a target="_top" href="/unix_commands/cp.htm">cp</a></li>
+<li><a target="_top" href="/unix_commands/cpan.htm">cpan</a></li>
+<li><a target="_top" href="/unix_commands/cpio.htm">cpio</a></li>
+<li><a target="_top" href="/unix_commands/cpp.htm">cpp</a></li>
+<li><a target="_top" href="/unix_commands/cpuspeed.htm">cpuspeed</a></li>
+<li><a target="_top" href="/unix_commands/crash.htm">crash</a></li>
+<li><a target="_top" href="/unix_commands/createdb.htm">createdb</a></li>
+<li><a target="_top" href="/unix_commands/createlang.htm">createlang</a></li>
+<li><a target="_top" href="/unix_commands/createuser.htm">createuser</a></li>
+<li><a target="_top" href="/unix_commands/cron.htm">cron</a></li>
+<li><a target="_top" href="/unix_commands/crond.htm">crond</a></li>
+<li><a target="_top" href="/unix_commands/crontab.htm">crontab</a></li>
+<li><a target="_top" href="/unix_commands/cryptsetup.htm">cryptsetup</a></li>
+<li><a target="_top" href="/unix_commands/csh.htm">csh</a></li>
+<li><a target="_top" href="/unix_commands/csplit.htm">csplit</a></li>
+<li><a target="_top" href="/unix_commands/ctags.htm">ctags</a></li>
+<li><a target="_top" href="/unix_commands/cupsctl.htm">cupsctl</a></li>
+<li><a target="_top" href="/unix_commands/cupsd.htm">cupsd</a></li>
+<li><a target="_top" href="/unix_commands/curl.htm">curl</a></li>
+<li><a target="_top" href="/unix_commands/cut.htm">cut</a></li>
+<li><a target="_top" href="/unix_commands/cvs.htm">cvs</a></li>
+<li><a target="_top" href="/unix_commands/cvsbug.htm">cvsbug</a></li>
+<li><a target="_top" href="/unix_commands/cyradm.htm">cyradm</a></li>
+<li><a target="_top" href="/unix_commands/cytune.htm">cytune</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">D</li>
+<li><a target="_top" href="/unix_commands/date.htm">date</a></li>
+<li><a target="_top" href="/unix_commands/dc.htm">dc</a></li>
+<li><a target="_top" href="/unix_commands/dd.htm">dd</a></li>
+<li><a target="_top" href="/unix_commands/deallocvt.htm">deallocvt</a></li>
+<li><a target="_top" href="/unix_commands/debugfs.htm">debugfs</a></li>
+<li><a target="_top" href="/unix_commands/declare.htm">declare</a></li>
+<li><a target="_top" href="/unix_commands/defer.htm">defer</a></li>
+<li><a target="_top" href="/unix_commands/deliver.htm">deliver</a></li>
+<li><a target="_top" href="/unix_commands/delpart.htm">delpart</a></li>
+<li><a target="_top" href="/unix_commands/depmod.htm">depmod</a></li>
+<li><a target="_top" href="/unix_commands/df.htm">df</a></li>
+<li><a target="_top" href="/unix_commands/dfutool.htm">dfutool</a></li>
+<li><a target="_top" href="/unix_commands/dgst.htm">dgst</a></li>
+<li><a target="_top" href="/unix_commands/diff.htm">diff</a></li>
+<li><a target="_top" href="/unix_commands/diffstat.htm">diffstat</a></li>
+<li><a target="_top" href="/unix_commands/dig.htm">dig</a></li>
+<li><a target="_top" href="/unix_commands/dir.htm">dir</a></li>
+<li><a target="_top" href="/unix_commands/dircolors.htm">dircolors</a></li>
+<li><a target="_top" href="/unix_commands/dirname.htm">dirname</a></li>
+<li><a target="_top" href="/unix_commands/dirs.htm">dirs</a></li>
+<li><a target="_top" href="/unix_commands/discard.htm">discard</a></li>
+<li><a target="_top" href="/unix_commands/disown.htm">disown</a></li>
+<li><a target="_top" href="/unix_commands/display.htm">display</a></li>
+<li><a target="_top" href="/unix_commands/distcache.htm">distcache</a></li>
+<li><a target="_top" href="/unix_commands/djpeg.htm">djpeg</a></li>
+<li><a target="_top" href="/unix_commands/dmesg.htm">dmesg</a></li>
+<li><a target="_top" href="/unix_commands/dmidecode.htm">dmidecode</a></li>
+<li><a target="_top" href="/unix_commands/dmraid.htm">dmraid</a></li>
+<li><a target="_top" href="/unix_commands/dmsetup.htm">dmsetup</a></li>
+<li><a target="_top" href="/unix_commands/dnsdomainname.htm">dnsdomainname</a></li>
+<li><a target="_top" href="/unix_commands/dnsmasq.htm">dnsmasq</a></li>
+<li><a target="_top" href="/unix_commands/doexec.htm">doexec</a></li>
+<li><a target="_top" href="/unix_commands/domainname.htm">domainname</a></li>
+<li><a target="_top" href="/unix_commands/dos2unix.htm">dos2unix</a></li>
+<li><a target="_top" href="/unix_commands/dosfsck.htm">dosfsck</a></li>
+<li><a target="_top" href="/unix_commands/doxygen.htm">doxygen</a></li>
+<li><a target="_top" href="/unix_commands/doxytag.htm">doxytag</a></li>
+<li><a target="_top" href="/unix_commands/dprofpp.htm">dprofpp</a></li>
+<li><a target="_top" href="/unix_commands/dropdb.htm">dropdb</a></li>
+<li><a target="_top" href="/unix_commands/droplang.htm">droplang</a></li>
+<li><a target="_top" href="/unix_commands/dropuser.htm">dropuser</a></li>
+<li><a target="_top" href="/unix_commands/dsa.htm">dsa</a></li>
+<li><a target="_top" href="/unix_commands/dsaparam.htm">dsaparam</a></li>
+<li><a target="_top" href="/unix_commands/du.htm">du</a></li>
+<li><a target="_top" href="/unix_commands/dump.htm">dump</a></li>
+<li><a target="_top" href="/unix_commands/dund.htm">dund</a></li>
+<li><a target="_top" href="/unix_commands/dvipdf.htm">dvipdf</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">E</li>
+<li><a target="_top" href="/unix_commands/ec.htm">ec</a></li>
+<li><a target="_top" href="/unix_commands/echo.htm">echo</a></li>
+<li><a target="_top" href="/unix_commands/ecparam.htm">ecparam</a></li>
+<li><a target="_top" href="/unix_commands/ed.htm">ed</a></li>
+<li><a target="_top" href="/unix_commands/editdiff.htm">editdiff</a></li>
+<li><a target="_top" href="/unix_commands/edquota.htm">edquota</a></li>
+<li><a target="_top" href="/unix_commands/egrep.htm">egrep</a></li>
+<li><a target="_top" href="/unix_commands/eject.htm">eject</a></li>
+<li><a target="_top" href="/unix_commands/elinks.htm">elinks</a></li>
+<li><a target="_top" href="/unix_commands/emacs.htm">emacs</a></li>
+<li><a target="_top" href="/unix_commands/enable.htm">enable</a></li>
+<li><a target="_top" href="/unix_commands/enc.htm">enc</a></li>
+<li><a target="_top" href="/unix_commands/env.htm">env</a></li>
+<li><a target="_top" href="/unix_commands/envsubst.htm">envsubst</a></li>
+<li><a target="_top" href="/unix_commands/eqn.htm">eqn</a></li>
+<li><a target="_top" href="/unix_commands/error.htm">error</a></li>
+<li><a target="_top" href="/unix_commands/errstr.htm">errstr</a></li>
+<li><a target="_top" href="/unix_commands/esd.htm">esd</a></li>
+<li><a target="_top" href="/unix_commands/esdcat.htm">esdcat</a></li>
+<li><a target="_top" href="/unix_commands/esdctl.htm">esdctl</a></li>
+<li><a target="_top" href="/unix_commands/esddsp.htm">esddsp</a></li>
+<li><a target="_top" href="/unix_commands/esdfilt.htm">esdfilt</a></li>
+<li><a target="_top" href="/unix_commands/esdloop.htm">esdloop</a></li>
+<li><a target="_top" href="/unix_commands/esdmon.htm">esdmon</a></li>
+<li><a target="_top" href="/unix_commands/esdplay.htm">esdplay</a></li>
+<li><a target="_top" href="/unix_commands/esdrec.htm">esdrec</a></li>
+<li><a target="_top" href="/unix_commands/esdsample.htm">esdsample</a></li>
+<li><a target="_top" href="/unix_commands/espdiff.htm">espdiff</a></li>
+<li><a target="_top" href="/unix_commands/etags.htm">etags</a></li>
+<li><a target="_top" href="/unix_commands/ethtool.htm">ethtool</a></li>
+<li><a target="_top" href="/unix_commands/eval.htm">eval</a></li>
+<li><a target="_top" href="/unix_commands/eventlogadm.htm">eventlogadm</a></li>
+<li><a target="_top" href="/unix_commands/ex.htm">ex</a></li>
+<li><a target="_top" href="/unix_commands/exec.htm">exec</a></li>
+<li><a target="_top" href="/unix_commands/execstack.htm">execstack</a></li>
+<li><a target="_top" href="/unix_commands/exit.htm">exit</a></li>
+<li><a target="_top" href="/unix_commands/expand.htm">expand</a></li>
+<li><a target="_top" href="/unix_commands/export.htm">export</a></li>
+<li><a target="_top" href="/unix_commands/exportfs.htm">exportfs</a></li>
+<li><a target="_top" href="/unix_commands/expr.htm">expr</a></li>
+<li><a target="_top" href="/unix_commands/extcheck.htm">extcheck</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">F</li>
+<li><a target="_top" href="/unix_commands/factor.htm">factor</a></li>
+<li><a target="_top" href="/unix_commands/faillog.htm">faillog</a></li>
+<li><a target="_top" href="/unix_commands/false.htm">false</a></li>
+<li><a target="_top" href="/unix_commands/fancontrol.htm">fancontrol</a></li>
+<li><a target="_top" href="/unix_commands/fastjar.htm">fastjar</a></li>
+<li><a target="_top" href="/unix_commands/fax2ps.htm">fax2ps</a></li>
+<li><a target="_top" href="/unix_commands/fax2tiff.htm">fax2tiff</a></li>
+<li><a target="_top" href="/unix_commands/fbset.htm">fbset</a></li>
+<li><a target="_top" href="/unix_commands/fc.htm">fc</a></li>
+<li><a target="_top" href="/unix_commands/fdformat.htm">fdformat</a></li>
+<li><a target="_top" href="/unix_commands/fdisk.htm">fdisk</a></li>
+<li><a target="_top" href="/unix_commands/fetchmail.htm">fetchmail</a></li>
+<li><a target="_top" href="/unix_commands/fg.htm">fg</a></li>
+<li><a target="_top" href="/unix_commands/fgconsole.htm">fgconsole</a></li>
+<li><a target="_top" href="/unix_commands/fgrep.htm">fgrep</a></li>
+<li><a target="_top" href="/unix_commands/file.htm">file</a></li>
+<li><a target="_top" href="/unix_commands/filefrag.htm">filefrag</a></li>
+<li><a target="_top" href="/unix_commands/filterdiff.htm">filterdiff</a></li>
+<li><a target="_top" href="/unix_commands/find.htm">find</a></li>
+<li><a target="_top" href="/unix_commands/find2perl.htm">find2perl</a></li>
+<li><a target="_top" href="/unix_commands/findchip.htm">findchip</a></li>
+<li><a target="_top" href="/unix_commands/findfs.htm">findfs</a></li>
+<li><a target="_top" href="/unix_commands/findsmb.htm">findsmb</a></li>
+<li><a target="_top" href="/unix_commands/finger.htm">finger</a></li>
+<li><a target="_top" href="/unix_commands/fixcvsdiff.htm">fixcvsdiff</a></li>
+<li><a target="_top" href="/unix_commands/fixfiles.htm">fixfiles</a></li>
+<li><a target="_top" href="/unix_commands/flipdiff.htm">flipdiff</a></li>
+<li><a target="_top" href="/unix_commands/flock.htm">flock</a></li>
+<li><a target="_top" href="/unix_commands/floppy.htm">floppy</a></li>
+<li><a target="_top" href="/unix_commands/flush.htm">flush</a></li>
+<li><a target="_top" href="/unix_commands/fmt.htm">fmt</a></li>
+<li><a target="_top" href="/unix_commands/fold.htm">fold</a></li>
+<li><a target="_top" href="/unix_commands/font2c.htm">font2c</a></li>
+<li><a target="_top" href="/unix_commands/fonttosfnt.htm">fonttosfnt</a></li>
+<li><a target="_top" href="/unix_commands/formail.htm">formail</a></li>
+<li><a target="_top" href="/unix_commands/free.htm">free</a></li>
+<li><a target="_top" href="/unix_commands/fsadm.htm">fsadm</a></li>
+<li><a target="_top" href="/unix_commands/fsck.htm">fsck</a></li>
+<li><a target="_top" href="/unix_commands/ftp.htm">ftp</a></li>
+<li><a target="_top" href="/unix_commands/fud.htm">fud</a></li>
+<li><a target="_top" href="/unix_commands/funzip.htm">funzip</a></li>
+<li><a target="_top" href="/unix_commands/fuser.htm">fuser</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">G</li>
+<li><a target="_top" href="/unix_commands/g++.htm">g++</a></li>
+<li><a target="_top" href="/unix_commands/gawk.htm">gawk</a></li>
+<li><a target="_top" href="/unix_commands/gcc.htm">gcc</a></li>
+<li><a target="_top" href="/unix_commands/gccmakedep.htm">gccmakedep</a></li>
+<li><a target="_top" href="/unix_commands/gcj.htm">gcj</a></li>
+<li><a target="_top" href="/unix_commands/gcjh.htm">gcjh</a></li>
+<li><a target="_top" href="/unix_commands/gcov.htm">gcov</a></li>
+<li><a target="_top" href="/unix_commands/gctags.htm">gctags</a></li>
+<li><a target="_top" href="/unix_commands/gdb.htm">gdb</a></li>
+<li><a target="_top" href="/unix_commands/gdbserver.htm">gdbserver</a></li>
+<li><a target="_top" href="/unix_commands/gdbtui.htm">gdbtui</a></li>
+<li><a target="_top" href="/unix_commands/gendiff.htm">gendiff</a></li>
+<li><a target="_top" href="/unix_commands/gendsa.htm">gendsa</a></li>
+<li><a target="_top" href="/unix_commands/genhomedircon.htm">genhomedircon</a></li>
+<li><a target="_top" href="/unix_commands/genhostid.htm">genhostid</a></li>
+<li><a target="_top" href="/unix_commands/genrsa.htm">genrsa</a></li>
+<li><a target="_top" href="/unix_commands/geqn.htm">geqn</a></li>
+<li><a target="_top" href="/unix_commands/getenforce.htm">getenforce</a></li>
+<li><a target="_top" href="/unix_commands/getent.htm">getent</a></li>
+<li><a target="_top" href="/unix_commands/getfacl.htm">getfacl</a></li>
+<li><a target="_top" href="/unix_commands/getfattr.htm">getfattr</a></li>
+<li><a target="_top" href="/unix_commands/getkey.htm">getkey</a></li>
+<li><a target="_top" href="/unix_commands/getkeycodes.htm">getkeycodes</a></li>
+<li><a target="_top" href="/unix_commands/getopt.htm">getopt</a></li>
+<li><a target="_top" href="/unix_commands/getopts.htm">getopts</a></li>
+<li><a target="_top" href="/unix_commands/getsebool.htm">getsebool</a></li>
+<li><a target="_top" href="/unix_commands/gettext.htm">gettext</a></li>
+<li><a target="_top" href="/unix_commands/gfdl.htm">gfdl</a></li>
+<li><a target="_top" href="/unix_commands/ghostscript.htm">ghostscript</a></li>
+<li><a target="_top" href="/unix_commands/gif2tiff.htm">gif2tiff</a></li>
+<li><a target="_top" href="/unix_commands/gij.htm">gij</a></li>
+<li><a target="_top" href="/unix_commands/gindxbib.htm">gindxbib</a></li>
+<li><a target="_top" href="/unix_commands/gjnih.htm">gjnih</a></li>
+<li><a target="_top" href="/unix_commands/glookbib.htm">glookbib</a></li>
+<li><a target="_top" href="/unix_commands/gnroff.htm">gnroff</a></li>
+<li><a target="_top" href="/unix_commands/gpasswd.htm">gpasswd</a></li>
+<li><a target="_top" href="/unix_commands/gpg.htm">gpg</a></li>
+<li><a target="_top" href="/unix_commands/gpg.ru.htm">gpg.ru</a></li>
+<li><a target="_top" href="/unix_commands/gpgv.htm">gpgv</a></li>
+<li><a target="_top" href="/unix_commands/gpic.htm">gpic</a></li>
+<li><a target="_top" href="/unix_commands/gpm.htm">gpm</a></li>
+<li><a target="_top" href="/unix_commands/gprof.htm">gprof</a></li>
+<li><a target="_top" href="/unix_commands/grefer.htm">grefer</a></li>
+<li><a target="_top" href="/unix_commands/grep.htm">grep</a></li>
+<li><a target="_top" href="/unix_commands/grepdiff.htm">grepdiff</a></li>
+<li><a target="_top" href="/unix_commands/grepjar.htm">grepjar</a></li>
+<li><a target="_top" href="/unix_commands/grmic.htm">grmic</a></li>
+<li><a target="_top" href="/unix_commands/grmiregistry.htm">grmiregistry</a></li>
+<li><a target="_top" href="/unix_commands/grn.htm">grn</a></li>
+<li><a target="_top" href="/unix_commands/grodvi.htm">grodvi</a></li>
+<li><a target="_top" href="/unix_commands/groff.htm">groff</a></li>
+<li><a target="_top" href="/unix_commands/groffer.htm">groffer</a></li>
+<li><a target="_top" href="/unix_commands/grohtml.htm">grohtml</a></li>
+<li><a target="_top" href="/unix_commands/grolbp.htm">grolbp</a></li>
+<li><a target="_top" href="/unix_commands/grolj4.htm">grolj4</a></li>
+<li><a target="_top" href="/unix_commands/grops.htm">grops</a></li>
+<li><a target="_top" href="/unix_commands/grotty.htm">grotty</a></li>
+<li><a target="_top" href="/unix_commands/groupadd.htm">groupadd</a></li>
+<li><a target="_top" href="/unix_commands/groupdel.htm">groupdel</a></li>
+<li><a target="_top" href="/unix_commands/groupmod.htm">groupmod</a></li>
+<li><a target="_top" href="/unix_commands/groups.htm">groups</a></li>
+<li><a target="_top" href="/unix_commands/grpck.htm">grpck</a></li>
+<li><a target="_top" href="/unix_commands/grpconv.htm">grpconv</a></li>
+<li><a target="_top" href="/unix_commands/grpunconv.htm">grpunconv</a></li>
+<li><a target="_top" href="/unix_commands/grub.htm">grub</a></li>
+<li><a target="_top" href="/unix_commands/grubby.htm">grubby</a></li>
+<li><a target="_top" href="/unix_commands/gs.htm">gs</a></li>
+<li><a target="_top" href="/unix_commands/gtroff.htm">gtroff</a></li>
+<li><a target="_top" href="/unix_commands/gunzip.htm">gunzip</a></li>
+<li><a target="_top" href="/unix_commands/gzexe.htm">gzexe</a></li>
+<li><a target="_top" href="/unix_commands/gzip.htm">gzip</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">H</li>
+<li><a target="_top" href="/unix_commands/hald.htm">hald</a></li>
+<li><a target="_top" href="/unix_commands/halt.htm">halt</a></li>
+<li><a target="_top" href="/unix_commands/hash.htm">hash</a></li>
+<li><a target="_top" href="/unix_commands/hcid.htm">hcid</a></li>
+<li><a target="_top" href="/unix_commands/hcitool.htm">hcitool</a></li>
+<li><a target="_top" href="/unix_commands/hdparm.htm">hdparm</a></li>
+<li><a target="_top" href="/unix_commands/head.htm">head</a></li>
+<li><a target="_top" href="/unix_commands/help.htm">help</a></li>
+<li><a target="_top" href="/unix_commands/hexdump.htm">hexdump</a></li>
+<li><a target="_top" href="/unix_commands/history.htm">history</a></li>
+<li><a target="_top" href="/unix_commands/host.htm">host</a></li>
+<li><a target="_top" href="/unix_commands/hostid.htm">hostid</a></li>
+<li><a target="_top" href="/unix_commands/hostname.htm">hostname</a></li>
+<li><a target="_top" href="/unix_commands/htdbm.htm">htdbm</a></li>
+<li><a target="_top" href="/unix_commands/htdigest.htm">htdigest</a></li>
+<li><a target="_top" href="/unix_commands/htpasswd.htm">htpasswd</a></li>
+<li><a target="_top" href="/unix_commands/httpd.htm">httpd</a></li>
+<li><a target="_top" href="/unix_commands/hwclock.htm">hwclock</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">I</li>
+<li><a target="_top" href="/unix_commands/icclink.htm">icclink</a></li>
+<li><a target="_top" href="/unix_commands/iconv.htm">iconv</a></li>
+<li><a target="_top" href="/unix_commands/id.htm">id</a></li>
+<li><a target="_top" href="/unix_commands/identify.htm">identify</a></li>
+<li><a target="_top" href="/unix_commands/idmapd.htm">idmapd</a></li>
+<li><a target="_top" href="/unix_commands/ifconfig.htm">ifconfig</a></li>
+<li><a target="_top" href="/unix_commands/ifnames.htm">ifnames</a></li>
+<li><a target="_top" href="/unix_commands/ifrename.htm">ifrename</a></li>
+<li><a target="_top" href="/unix_commands/igawk.htm">igawk</a></li>
+<li><a target="_top" href="/unix_commands/imake.htm">imake</a></li>
+<li><a target="_top" href="/unix_commands/imapd.htm">imapd</a></li>
+<li><a target="_top" href="/unix_commands/import.htm">import</a></li>
+<li><a target="_top" href="/unix_commands/imtest.htm">imtest</a></li>
+<li><a target="_top" href="/unix_commands/indxbib.htm">indxbib</a></li>
+<li><a target="_top" href="/unix_commands/info.htm">info</a></li>
+<li><a target="_top" href="/unix_commands/infocmp.htm">infocmp</a></li>
+<li><a target="_top" href="/unix_commands/infokey.htm">infokey</a></li>
+<li><a target="_top" href="/unix_commands/infotocap.htm">infotocap</a></li>
+<li><a target="_top" href="/unix_commands/init.htm">init</a></li>
+<li><a target="_top" href="/unix_commands/initdb.htm">initdb</a></li>
+<li><a target="_top" href="/unix_commands/initlog.htm">initlog</a></li>
+<li><a target="_top" href="/unix_commands/innochecksum.htm">innochecksum</a></li>
+<li><a target="_top" href="/unix_commands/insmod.htm">insmod</a></li>
+<li><a target="_top" href="/unix_commands/install.htm">install</a></li>
+<li><a target="_top" href="/unix_commands/installsieve.htm">installsieve</a></li>
+<li><a target="_top" href="/unix_commands/instmodsh.htm">instmodsh</a></li>
+<li><a target="_top" href="/unix_commands/interdiff.htm">interdiff</a></li>
+<li><a target="_top" href="/unix_commands/intro.htm">intro</a></li>
+<li><a target="_top" href="/unix_commands/ionice.htm">ionice</a></li>
+<li><a target="_top" href="/unix_commands/ip.htm">ip</a></li>
+<li><a target="_top" href="/unix_commands/ip6tables.htm">ip6tables</a></li>
+<li><a target="_top" href="/unix_commands/ipcalc.htm">ipcalc</a></li>
+<li><a target="_top" href="/unix_commands/ipcclean.htm">ipcclean</a></li>
+<li><a target="_top" href="/unix_commands/ipcrm.htm">ipcrm</a></li>
+<li><a target="_top" href="/unix_commands/ipcs.htm">ipcs</a></li>
+<li><a target="_top" href="/unix_commands/iptables-restore.htm">iptables-restore</a></li>
+<li><a target="_top" href="/unix_commands/iptables-save.htm">iptables-save</a></li>
+<li><a target="_top" href="/unix_commands/iptables.htm">iptables</a></li>
+<li><a target="_top" href="/unix_commands/iptstate.htm">iptstate</a></li>
+<li><a target="_top" href="/unix_commands/ipurge.htm">ipurge</a></li>
+<li><a target="_top" href="/unix_commands/irattach.htm">irattach</a></li>
+<li><a target="_top" href="/unix_commands/irdadump.htm">irdadump</a></li>
+<li><a target="_top" href="/unix_commands/irdaping.htm">irdaping</a></li>
+<li><a target="_top" href="/unix_commands/irnetd.htm">irnetd</a></li>
+<li><a target="_top" href="/unix_commands/irpsion5.htm">irpsion5</a></li>
+<li><a target="_top" href="/unix_commands/irqbalance.htm">irqbalance</a></li>
+<li><a target="_top" href="/unix_commands/isadump.htm">isadump</a></li>
+<li><a target="_top" href="/unix_commands/isaset.htm">isaset</a></li>
+<li><a target="_top" href="/unix_commands/isosize.htm">isosize</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">J</li>
+<li><a target="_top" href="/unix_commands/jade.htm">jade</a></li>
+<li><a target="_top" href="/unix_commands/jarsigner.htm">jarsigner</a></li>
+<li><a target="_top" href="/unix_commands/java.htm">java</a></li>
+<li><a target="_top" href="/unix_commands/javac.htm">javac</a></li>
+<li><a target="_top" href="/unix_commands/javadoc.htm">javadoc</a></li>
+<li><a target="_top" href="/unix_commands/javah.htm">javah</a></li>
+<li><a target="_top" href="/unix_commands/javap.htm">javap</a></li>
+<li><a target="_top" href="/unix_commands/javaws.htm">javaws</a></li>
+<li><a target="_top" href="/unix_commands/jconsole.htm">jconsole</a></li>
+<li><a target="_top" href="/unix_commands/jdb.htm">jdb</a></li>
+<li><a target="_top" href="/unix_commands/jinfo.htm">jinfo</a></li>
+<li><a target="_top" href="/unix_commands/jmap.htm">jmap</a></li>
+<li><a target="_top" href="/unix_commands/jobs.htm">jobs</a></li>
+<li><a target="_top" href="/unix_commands/join.htm">join</a></li>
+<li><a target="_top" href="/unix_commands/jpegicc.htm">jpegicc</a></li>
+<li><a target="_top" href="/unix_commands/jpegtran.htm">jpegtran</a></li>
+<li><a target="_top" href="/unix_commands/jps.htm">jps</a></li>
+<li><a target="_top" href="/unix_commands/jsadebugd.htm">jsadebugd</a></li>
+<li><a target="_top" href="/unix_commands/jstack.htm">jstack</a></li>
+<li><a target="_top" href="/unix_commands/jstat.htm">jstat</a></li>
+<li><a target="_top" href="/unix_commands/jstatd.htm">jstatd</a></li>
+<li><a target="_top" href="/unix_commands/jwhois.htm">jwhois</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">K</li>
+<li><a target="_top" href="/unix_commands/kbd_mode.htm">kbd_mode</a></li>
+<li><a target="_top" href="/unix_commands/kbdrate.htm">kbdrate</a></li>
+<li><a target="_top" href="/unix_commands/keytool.htm">keytool</a></li>
+<li><a target="_top" href="/unix_commands/kill.htm">kill</a></li>
+<li><a target="_top" href="/unix_commands/killall.htm">killall</a></li>
+<li><a target="_top" href="/unix_commands/kinit.htm">kinit</a></li>
+<li><a target="_top" href="/unix_commands/klist.htm">klist</a></li>
+<li><a target="_top" href="/unix_commands/klogd.htm">klogd</a></li>
+<li><a target="_top" href="/unix_commands/kpartx.htm">kpartx</a></li>
+<li><a target="_top" href="/unix_commands/ksh.htm">ksh</a></li>
+<li><a target="_top" href="/unix_commands/ktab.htm">ktab</a></li>
+<li><a target="_top" href="/unix_commands/kudzu.htm">kudzu</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">L</li>
+<li><a target="_top" href="/unix_commands/last.htm">last</a></li>
+<li><a target="_top" href="/unix_commands/lastb.htm">lastb</a></li>
+<li><a target="_top" href="/unix_commands/lastcomm.htm">lastcomm</a></li>
+<li><a target="_top" href="/unix_commands/lastlog.htm">lastlog</a></li>
+<li><a target="_top" href="/unix_commands/lchage.htm">lchage</a></li>
+<li><a target="_top" href="/unix_commands/lchfn.htm">lchfn</a></li>
+<li><a target="_top" href="/unix_commands/lchsh.htm">lchsh</a></li>
+<li><a target="_top" href="/unix_commands/ld.htm">ld</a></li>
+<li><a target="_top" href="/unix_commands/ldconfig.htm">ldconfig</a></li>
+<li><a target="_top" href="/unix_commands/ldd.htm">ldd</a></li>
+<li><a target="_top" href="/unix_commands/less.htm">less</a></li>
+<li><a target="_top" href="/unix_commands/lessecho.htm">lessecho</a></li>
+<li><a target="_top" href="/unix_commands/lesskey.htm">lesskey</a></li>
+<li><a target="_top" href="/unix_commands/let.htm">let</a></li>
+<li><a target="_top" href="/unix_commands/lftp.htm">lftp</a></li>
+<li><a target="_top" href="/unix_commands/lftpget.htm">lftpget</a></li>
+<li><a target="_top" href="/unix_commands/libnetcfg.htm">libnetcfg</a></li>
+<li><a target="_top" href="/unix_commands/lid.htm">lid</a></li>
+<li><a target="_top" href="/unix_commands/link.htm">link</a></li>
+<li><a target="_top" href="/unix_commands/links.htm">links</a></li>
+<li><a target="_top" href="/unix_commands/lkbib.htm">lkbib</a></li>
+<li><a target="_top" href="/unix_commands/lmtp.htm">lmtp</a></li>
+<li><a target="_top" href="/unix_commands/lmtpd.htm">lmtpd</a></li>
+<li><a target="_top" href="/unix_commands/lmtptest.htm">lmtptest</a></li>
+<li><a target="_top" href="/unix_commands/ln.htm">ln</a></li>
+<li><a target="_top" href="/unix_commands/lndir.htm">lndir</a></li>
+<li><a target="_top" href="/unix_commands/lnewusers.htm">lnewusers</a></li>
+<li><a target="_top" href="/unix_commands/loadkeys.htm">loadkeys</a></li>
+<li><a target="_top" href="/unix_commands/loadunimap.htm">loadunimap</a></li>
+<li><a target="_top" href="/unix_commands/local.htm">local</a></li>
+<li><a target="_top" href="/unix_commands/locale.htm">locale</a></li>
+<li><a target="_top" href="/unix_commands/localedef.htm">localedef</a></li>
+<li><a target="_top" href="/unix_commands/locate.htm">locate</a></li>
+<li><a target="_top" href="/unix_commands/lockd.htm">lockd</a></li>
+<li><a target="_top" href="/unix_commands/lockfile.htm">lockfile</a></li>
+<li><a target="_top" href="/unix_commands/logger.htm">logger</a></li>
+<li><a target="_top" href="/unix_commands/login.htm">login</a></li>
+<li><a target="_top" href="/unix_commands/logname.htm">logname</a></li>
+<li><a target="_top" href="/unix_commands/logout.htm">logout</a></li>
+<li><a target="_top" href="/unix_commands/logresolve.htm">logresolve</a></li>
+<li><a target="_top" href="/unix_commands/logrotate.htm">logrotate</a></li>
+<li><a target="_top" href="/unix_commands/logsave.htm">logsave</a></li>
+<li><a target="_top" href="/unix_commands/logwatch.htm">logwatch</a></li>
+<li><a target="_top" href="/unix_commands/look.htm">look</a></li>
+<li><a target="_top" href="/unix_commands/lookbib.htm">lookbib</a></li>
+<li><a target="_top" href="/unix_commands/losetup.htm">losetup</a></li>
+<li><a target="_top" href="/unix_commands/lp.htm">lp</a></li>
+<li><a target="_top" href="/unix_commands/lpadmin.htm">lpadmin</a></li>
+<li><a target="_top" href="/unix_commands/lpasswd.htm">lpasswd</a></li>
+<li><a target="_top" href="/unix_commands/lpc.htm">lpc</a></li>
+<li><a target="_top" href="/unix_commands/lpinfo.htm">lpinfo</a></li>
+<li><a target="_top" href="/unix_commands/lpmove.htm">lpmove</a></li>
+<li><a target="_top" href="/unix_commands/lpoptions.htm">lpoptions</a></li>
+<li><a target="_top" href="/unix_commands/lppasswd.htm">lppasswd</a></li>
+<li><a target="_top" href="/unix_commands/lpq-cups.htm">lpq-cups</a></li>
+<li><a target="_top" href="/unix_commands/lpq.htm">lpq</a></li>
+<li><a target="_top" href="/unix_commands/lpr.htm">lpr</a></li>
+<li><a target="_top" href="/unix_commands/lprm.htm">lprm</a></li>
+<li><a target="_top" href="/unix_commands/lpstat.htm">lpstat</a></li>
+<li><a target="_top" href="/unix_commands/ls.htm">ls</a></li>
+<li><a target="_top" href="/unix_commands/lsattr.htm">lsattr</a></li>
+<li><a target="_top" href="/unix_commands/lsdiff.htm">lsdiff</a></li>
+<li><a target="_top" href="/unix_commands/lshal.htm">lshal</a></li>
+<li><a target="_top" href="/unix_commands/lsmod.htm">lsmod</a></li>
+<li><a target="_top" href="/unix_commands/lsof.htm">lsof</a></li>
+<li><a target="_top" href="/unix_commands/lspci.htm">lspci</a></li>
+<li><a target="_top" href="/unix_commands/lspcmcia.htm">lspcmcia</a></li>
+<li><a target="_top" href="/unix_commands/lsusb.htm">lsusb</a></li>
+<li><a target="_top" href="/unix_commands/ltrace.htm">ltrace</a></li>
+<li><a target="_top" href="/unix_commands/lwresd.htm">lwresd</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">M</li>
+<li><a target="_top" href="/unix_commands/m4.htm">m4</a></li>
+<li><a target="_top" href="/unix_commands/mac2unix.htm">mac2unix</a></li>
+<li><a target="_top" href="/unix_commands/mail.htm">mail</a></li>
+<li><a target="_top" href="/unix_commands/mailq.htm">mailq</a></li>
+<li><a target="_top" href="/unix_commands/make.htm">make</a></li>
+<li><a target="_top" href="/unix_commands/makedepend.htm">makedepend</a></li>
+<li><a target="_top" href="/unix_commands/makeg.htm">makeg</a></li>
+<li><a target="_top" href="/unix_commands/makestrs.htm">makestrs</a></li>
+<li><a target="_top" href="/unix_commands/makewhatis.htm">makewhatis</a></li>
+<li><a target="_top" href="/unix_commands/man.htm">man</a></li>
+<li><a target="_top" href="/unix_commands/man2html.htm">man2html</a></li>
+<li><a target="_top" href="/unix_commands/manpath.htm">manpath</a></li>
+<li><a target="_top" href="/unix_commands/map.htm">map</a></li>
+<li><a target="_top" href="/unix_commands/mapscrn.htm">mapscrn</a></li>
+<li><a target="_top" href="/unix_commands/master.htm">master</a></li>
+<li><a target="_top" href="/unix_commands/matchpathcon.htm">matchpathcon</a></li>
+<li><a target="_top" href="/unix_commands/mattrib.htm">mattrib</a></li>
+<li><a target="_top" href="/unix_commands/mbadblocks.htm">mbadblocks</a></li>
+<li><a target="_top" href="/unix_commands/mbchk.htm">mbchk</a></li>
+<li><a target="_top" href="/unix_commands/mbexamine.htm">mbexamine</a></li>
+<li><a target="_top" href="/unix_commands/mbpath.htm">mbpath</a></li>
+<li><a target="_top" href="/unix_commands/mcat.htm">mcat</a></li>
+<li><a target="_top" href="/unix_commands/mcd.htm">mcd</a></li>
+<li><a target="_top" href="/unix_commands/mclasserase.htm">mclasserase</a></li>
+<li><a target="_top" href="/unix_commands/mcookie.htm">mcookie</a></li>
+<li><a target="_top" href="/unix_commands/mcopy.htm">mcopy</a></li>
+<li><a target="_top" href="/unix_commands/md5sum.htm">md5sum</a></li>
+<li><a target="_top" href="/unix_commands/mdadm.htm">mdadm</a></li>
+<li><a target="_top" href="/unix_commands/mdassemble.htm">mdassemble</a></li>
+<li><a target="_top" href="/unix_commands/mdeltree.htm">mdeltree</a></li>
+<li><a target="_top" href="/unix_commands/mdir.htm">mdir</a></li>
+<li><a target="_top" href="/unix_commands/mdmpd.htm">mdmpd</a></li>
+<li><a target="_top" href="/unix_commands/mdu.htm">mdu</a></li>
+<li><a target="_top" href="/unix_commands/mergelib.htm">mergelib</a></li>
+<li><a target="_top" href="/unix_commands/mesg.htm">mesg</a></li>
+<li><a target="_top" href="/unix_commands/mev.htm">mev</a></li>
+<li><a target="_top" href="/unix_commands/mformat.htm">mformat</a></li>
+<li><a target="_top" href="/unix_commands/mgetty.htm">mgetty</a></li>
+<li><a target="_top" href="/unix_commands/minfo.htm">minfo</a></li>
+<li><a target="_top" href="/unix_commands/mingetty.htm">mingetty</a></li>
+<li><a target="_top" href="/unix_commands/mkbootdisk.htm">mkbootdisk</a></li>
+<li><a target="_top" href="/unix_commands/mkdir.htm">mkdir</a></li>
+<li><a target="_top" href="/unix_commands/mkdirhier.htm">mkdirhier</a></li>
+<li><a target="_top" href="/unix_commands/mkdosfs.htm">mkdosfs</a></li>
+<li><a target="_top" href="/unix_commands/mke2fs.htm">mke2fs</a></li>
+<li><a target="_top" href="/unix_commands/mkfifo.htm">mkfifo</a></li>
+<li><a target="_top" href="/unix_commands/mkfontdir.htm">mkfontdir</a></li>
+<li><a target="_top" href="/unix_commands/mkfontscale.htm">mkfontscale</a></li>
+<li><a target="_top" href="/unix_commands/mkfs.ext2.htm">mkfs.ext2</a></li>
+<li><a target="_top" href="/unix_commands/mkfs.ext3.htm">mkfs.ext3</a></li>
+<li><a target="_top" href="/unix_commands/mkfs.htm">mkfs</a></li>
+<li><a target="_top" href="/unix_commands/mkhtmlindex.htm">mkhtmlindex</a></li>
+<li><a target="_top" href="/unix_commands/mkinitrd.htm">mkinitrd</a></li>
+<li><a target="_top" href="/unix_commands/mklost+found.htm">mklost+found</a></li>
+<li><a target="_top" href="/unix_commands/mkmanifest.htm">mkmanifest</a></li>
+<li><a target="_top" href="/unix_commands/mkmapfile.htm">mkmapfile</a></li>
+<li><a target="_top" href="/unix_commands/mknod.htm">mknod</a></li>
+<li><a target="_top" href="/unix_commands/mkswap.htm">mkswap</a></li>
+<li><a target="_top" href="/unix_commands/mktemp.htm">mktemp</a></li>
+<li><a target="_top" href="/unix_commands/mlabel.htm">mlabel</a></li>
+<li><a target="_top" href="/unix_commands/mmd.htm">mmd</a></li>
+<li><a target="_top" href="/unix_commands/mmount.htm">mmount</a></li>
+<li><a target="_top" href="/unix_commands/mmove.htm">mmove</a></li>
+<li><a target="_top" href="/unix_commands/modinfo.htm">modinfo</a></li>
+<li><a target="_top" href="/unix_commands/modprobe.htm">modprobe</a></li>
+<li><a target="_top" href="/unix_commands/mogrify.htm">mogrify</a></li>
+<li><a target="_top" href="/unix_commands/montage.htm">montage</a></li>
+<li><a target="_top" href="/unix_commands/more.htm">more</a></li>
+<li><a target="_top" href="/unix_commands/mount.htm">mount</a></li>
+<li><a target="_top" href="/unix_commands/mountd.htm">mountd</a></li>
+<li><a target="_top" href="/unix_commands/mountpoint.htm">mountpoint</a></li>
+<li><a target="_top" href="/unix_commands/mpartition.htm">mpartition</a></li>
+<li><a target="_top" href="/unix_commands/mrd.htm">mrd</a></li>
+<li><a target="_top" href="/unix_commands/mren.htm">mren</a></li>
+<li><a target="_top" href="/unix_commands/msgattrib.htm">msgattrib</a></li>
+<li><a target="_top" href="/unix_commands/msgcat.htm">msgcat</a></li>
+<li><a target="_top" href="/unix_commands/msgcmp.htm">msgcmp</a></li>
+<li><a target="_top" href="/unix_commands/msgcomm.htm">msgcomm</a></li>
+<li><a target="_top" href="/unix_commands/msgconv.htm">msgconv</a></li>
+<li><a target="_top" href="/unix_commands/msgen.htm">msgen</a></li>
+<li><a target="_top" href="/unix_commands/msgexec.htm">msgexec</a></li>
+<li><a target="_top" href="/unix_commands/msgfilter.htm">msgfilter</a></li>
+<li><a target="_top" href="/unix_commands/msgfmt.htm">msgfmt</a></li>
+<li><a target="_top" href="/unix_commands/msggrep.htm">msggrep</a></li>
+<li><a target="_top" href="/unix_commands/msginit.htm">msginit</a></li>
+<li><a target="_top" href="/unix_commands/msgmerge.htm">msgmerge</a></li>
+<li><a target="_top" href="/unix_commands/msgunfmt.htm">msgunfmt</a></li>
+<li><a target="_top" href="/unix_commands/msguniq.htm">msguniq</a></li>
+<li><a target="_top" href="/unix_commands/mshowfat.htm">mshowfat</a></li>
+<li><a target="_top" href="/unix_commands/msql2mysql.htm">msql2mysql</a></li>
+<li><a target="_top" href="/unix_commands/mtools.htm">mtools</a></li>
+<li><a target="_top" href="/unix_commands/mtoolstest.htm">mtoolstest</a></li>
+<li><a target="_top" href="/unix_commands/mtr.htm">mtr</a></li>
+<li><a target="_top" href="/unix_commands/mtype.htm">mtype</a></li>
+<li><a target="_top" href="/unix_commands/multipath.htm">multipath</a></li>
+<li><a target="_top" href="/unix_commands/multipathd.htm">multipathd</a></li>
+<li><a target="_top" href="/unix_commands/mupdatetest.htm">mupdatetest</a></li>
+<li><a target="_top" href="/unix_commands/mutt.htm">mutt</a></li>
+<li><a target="_top" href="/unix_commands/mv.htm">mv</a></li>
+<li><a target="_top" href="/unix_commands/mysql.htm">mysql</a></li>
+<li><a target="_top" href="/unix_commands/mysqlaccess.htm">mysqlaccess</a></li>
+<li><a target="_top" href="/unix_commands/mysqladmin.htm">mysqladmin</a></li>
+<li><a target="_top" href="/unix_commands/mysqlbinlog.htm">mysqlbinlog</a></li>
+<li><a target="_top" href="/unix_commands/mysqlbug.htm">mysqlbug</a></li>
+<li><a target="_top" href="/unix_commands/mysqlcheck.htm">mysqlcheck</a></li>
+<li><a target="_top" href="/unix_commands/mysqld.htm">mysqld</a></li>
+<li><a target="_top" href="/unix_commands/mysqld_multi.htm">mysqld_multi</a></li>
+<li><a target="_top" href="/unix_commands/mysqld_safe.htm">mysqld_safe</a></li>
+<li><a target="_top" href="/unix_commands/mysqldump.htm">mysqldump</a></li>
+<li><a target="_top" href="/unix_commands/mysqldumpslow.htm">mysqldumpslow</a></li>
+<li><a target="_top" href="/unix_commands/mysqlhotcopy.htm">mysqlhotcopy</a></li>
+<li><a target="_top" href="/unix_commands/mysqlimport.htm">mysqlimport</a></li>
+<li><a target="_top" href="/unix_commands/mysqlman.htm">mysqlman</a></li>
+<li><a target="_top" href="/unix_commands/mysqlmanager.htm">mysqlmanager</a></li>
+<li><a target="_top" href="/unix_commands/mysqlshow.htm">mysqlshow</a></li>
+<li><a target="_top" href="/unix_commands/mysqlslap.htm">mysqlslap</a></li>
+<li><a target="_top" href="/unix_commands/mysqltest.htm">mysqltest</a></li>
+<li><a target="_top" href="/unix_commands/mzip.htm">mzip</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">N</li>
+<li><a target="_top" href="/unix_commands/named.htm">named</a></li>
+<li><a target="_top" href="/unix_commands/namei.htm">namei</a></li>
+<li><a target="_top" href="/unix_commands/nameif.htm">nameif</a></li>
+<li><a target="_top" href="/unix_commands/nano.htm">nano</a></li>
+<li><a target="_top" href="/unix_commands/nash.htm">nash</a></li>
+<li><a target="_top" href="/unix_commands/nc.htm">nc</a></li>
+<li><a target="_top" href="/unix_commands/neqn.htm">neqn</a></li>
+<li><a target="_top" href="/unix_commands/net.htm">net</a></li>
+<li><a target="_top" href="/unix_commands/netplugd.htm">netplugd</a></li>
+<li><a target="_top" href="/unix_commands/netreport.htm">netreport</a></li>
+<li><a target="_top" href="/unix_commands/netstat.htm">netstat</a></li>
+<li><a target="_top" href="/unix_commands/newaliases.htm">newaliases</a></li>
+<li><a target="_top" href="/unix_commands/newgrp.htm">newgrp</a></li>
+<li><a target="_top" href="/unix_commands/newusers.htm">newusers</a></li>
+<li><a target="_top" href="/unix_commands/nfsd.htm">nfsd</a></li>
+<li><a target="_top" href="/unix_commands/nfsstat.htm">nfsstat</a></li>
+<li><a target="_top" href="/unix_commands/ngettext.htm">ngettext</a></li>
+<li><a target="_top" href="/unix_commands/nhfsgraph.htm">nhfsgraph</a></li>
+<li><a target="_top" href="/unix_commands/nhfsnums.htm">nhfsnums</a></li>
+<li><a target="_top" href="/unix_commands/nhfsrun.htm">nhfsrun</a></li>
+<li><a target="_top" href="/unix_commands/nhfsstone.htm">nhfsstone</a></li>
+<li><a target="_top" href="/unix_commands/nice.htm">nice</a></li>
+<li><a target="_top" href="/unix_commands/nm.htm">nm</a></li>
+<li><a target="_top" href="/unix_commands/nmbd.htm">nmbd</a></li>
+<li><a target="_top" href="/unix_commands/nmblookup.htm">nmblookup</a></li>
+<li><a target="_top" href="/unix_commands/nntpd.htm">nntpd</a></li>
+<li><a target="_top" href="/unix_commands/nntptest.htm">nntptest</a></li>
+<li><a target="_top" href="/unix_commands/nohup.htm">nohup</a></li>
+<li><a target="_top" href="/unix_commands/nologin.htm">nologin</a></li>
+<li><a target="_top" href="/unix_commands/notifyd.htm">notifyd</a></li>
+<li><a target="_top" href="/unix_commands/nroff.htm">nroff</a></li>
+<li><a target="_top" href="/unix_commands/nscd.htm">nscd</a></li>
+<li><a target="_top" href="/unix_commands/nseq.htm">nseq</a></li>
+<li><a target="_top" href="/unix_commands/nsgmls.htm">nsgmls</a></li>
+<li><a target="_top" href="/unix_commands/nslookup.htm">nslookup</a></li>
+<li><a target="_top" href="/unix_commands/nsupdate.htm">nsupdate</a></li>
+<li><a target="_top" href="/unix_commands/ntlm_auth.htm">ntlm_auth</a></li>
+<li><a target="_top" href="/unix_commands/ntpd.htm">ntpd</a></li>
+<li><a target="_top" href="/unix_commands/ntpdate.htm">ntpdate</a></li>
+<li><a target="_top" href="/unix_commands/ntpdc.htm">ntpdc</a></li>
+<li><a target="_top" href="/unix_commands/ntpq.htm">ntpq</a></li>
+<li><a target="_top" href="/unix_commands/ntpstat.htm">ntpstat</a></li>
+<li><a target="_top" href="/unix_commands/ntptime.htm">ntptime</a></li>
+<li><a target="_top" href="/unix_commands/ntptrace.htm">ntptrace</a></li>
+<li><a target="_top" href="/unix_commands/ntsysv.htm">ntsysv</a></li>
+<li><a target="_top" href="/unix_commands/numactl.htm">numactl</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">O</li>
+<li><a target="_top" href="/unix_commands/objcopy.htm">objcopy</a></li>
+<li><a target="_top" href="/unix_commands/objdump.htm">objdump</a></li>
+<li><a target="_top" href="/unix_commands/ocsp.htm">ocsp</a></li>
+<li><a target="_top" href="/unix_commands/od.htm">od</a></li>
+<li><a target="_top" href="/unix_commands/oddjobd.htm">oddjobd</a></li>
+<li><a target="_top" href="/unix_commands/onsgmls.htm">onsgmls</a></li>
+<li><a target="_top" href="/unix_commands/openjade.htm">openjade</a></li>
+<li><a target="_top" href="/unix_commands/openssl.htm">openssl</a></li>
+<li><a target="_top" href="/unix_commands/openvt.htm">openvt</a></li>
+<li><a target="_top" href="/unix_commands/oqmgr.htm">oqmgr</a></li>
+<li><a target="_top" href="/unix_commands/orbd.htm">orbd</a></li>
+<li><a target="_top" href="/unix_commands/osgmlnorm.htm">osgmlnorm</a></li>
+<li><a target="_top" href="/unix_commands/ospam.htm">ospam</a></li>
+<li><a target="_top" href="/unix_commands/ospcat.htm">ospcat</a></li>
+<li><a target="_top" href="/unix_commands/ospent.htm">ospent</a></li>
+<li><a target="_top" href="/unix_commands/ownership.htm">ownership</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">P</li>
+<li><a target="_top" href="/unix_commands/pand.htm">pand</a></li>
+<li><a target="_top" href="/unix_commands/paps.htm">paps</a></li>
+<li><a target="_top" href="/unix_commands/parted.htm">parted</a></li>
+<li><a target="_top" href="/unix_commands/partprobe.htm">partprobe</a></li>
+<li><a target="_top" href="/unix_commands/partx.htm">partx</a></li>
+<li><a target="_top" href="/unix_commands/passwd.htm">passwd</a></li>
+<li><a target="_top" href="/unix_commands/paste.htm">paste</a></li>
+<li><a target="_top" href="/unix_commands/patch.htm">patch</a></li>
+<li><a target="_top" href="/unix_commands/pathchk.htm">pathchk</a></li>
+<li><a target="_top" href="/unix_commands/pax.htm">pax</a></li>
+<li><a target="_top" href="/unix_commands/pccardctl.htm">pccardctl</a></li>
+<li><a target="_top" href="/unix_commands/pcregrep.htm">pcregrep</a></li>
+<li><a target="_top" href="/unix_commands/pcretest.htm">pcretest</a></li>
+<li><a target="_top" href="/unix_commands/pcscd.htm">pcscd</a></li>
+<li><a target="_top" href="/unix_commands/pdbedit.htm">pdbedit</a></li>
+<li><a target="_top" href="/unix_commands/pdf2dsc.htm">pdf2dsc</a></li>
+<li><a target="_top" href="/unix_commands/pdf2ps.htm">pdf2ps</a></li>
+<li><a target="_top" href="/unix_commands/pdffonts.htm">pdffonts</a></li>
+<li><a target="_top" href="/unix_commands/pdfimages.htm">pdfimages</a></li>
+<li><a target="_top" href="/unix_commands/pdfinfo.htm">pdfinfo</a></li>
+<li><a target="_top" href="/unix_commands/pdfopt.htm">pdfopt</a></li>
+<li><a target="_top" href="/unix_commands/pdftohtml.htm">pdftohtml</a></li>
+<li><a target="_top" href="/unix_commands/pdftops.htm">pdftops</a></li>
+<li><a target="_top" href="/unix_commands/pdftotext.htm">pdftotext</a></li>
+<li><a target="_top" href="/unix_commands/perror.htm">perror</a></li>
+<li><a target="_top" href="/unix_commands/pf2afm.htm">pf2afm</a></li>
+<li><a target="_top" href="/unix_commands/pfbtopfa.htm">pfbtopfa</a></li>
+<li><a target="_top" href="/unix_commands/pfbtops.htm">pfbtops</a></li>
+<li><a target="_top" href="/unix_commands/pftp.htm">pftp</a></li>
+<li><a target="_top" href="/unix_commands/pgawk.htm">pgawk</a></li>
+<li><a target="_top" href="/unix_commands/pgrep.htm">pgrep</a></li>
+<li><a target="_top" href="/unix_commands/php-config.htm">php-config</a></li>
+<li><a target="_top" href="/unix_commands/php.htm">php</a></li>
+<li><a target="_top" href="/unix_commands/phpize.htm">phpize</a></li>
+<li><a target="_top" href="/unix_commands/pic.htm">pic</a></li>
+<li><a target="_top" href="/unix_commands/pic2graph.htm">pic2graph</a></li>
+<li><a target="_top" href="/unix_commands/pickup.htm">pickup</a></li>
+<li><a target="_top" href="/unix_commands/piconv.htm">piconv</a></li>
+<li><a target="_top" href="/unix_commands/pidof.htm">pidof</a></li>
+<li><a target="_top" href="/unix_commands/pinfo.htm">pinfo</a></li>
+<li><a target="_top" href="/unix_commands/ping.htm">ping</a></li>
+<li><a target="_top" href="/unix_commands/ping6.htm">ping6</a></li>
+<li><a target="_top" href="/unix_commands/pinky.htm">pinky</a></li>
+<li><a target="_top" href="/unix_commands/pipe.htm">pipe</a></li>
+<li><a target="_top" href="/unix_commands/pkg-config.htm">pkg-config</a></li>
+<li><a target="_top" href="/unix_commands/pkill.htm">pkill</a></li>
+<li><a target="_top" href="/unix_commands/plipconfig.htm">plipconfig</a></li>
+<li><a target="_top" href="/unix_commands/pluginviewer.htm">pluginviewer</a></li>
+<li><a target="_top" href="/unix_commands/pman.htm">pman</a></li>
+<li><a target="_top" href="/unix_commands/pmap.htm">pmap</a></li>
+<li><a target="_top" href="/unix_commands/pod2html.htm">pod2html</a></li>
+<li><a target="_top" href="/unix_commands/pod2latex.htm">pod2latex</a></li>
+<li><a target="_top" href="/unix_commands/pod2man.htm">pod2man</a></li>
+<li><a target="_top" href="/unix_commands/pod2text.htm">pod2text</a></li>
+<li><a target="_top" href="/unix_commands/pod2usage.htm">pod2usage</a></li>
+<li><a target="_top" href="/unix_commands/podchecker.htm">podchecker</a></li>
+<li><a target="_top" href="/unix_commands/podselect.htm">podselect</a></li>
+<li><a target="_top" href="/unix_commands/policytool.htm">policytool</a></li>
+<li><a target="_top" href="/unix_commands/pop3d.htm">pop3d</a></li>
+<li><a target="_top" href="/unix_commands/pop3test.htm">pop3test</a></li>
+<li><a target="_top" href="/unix_commands/popd.htm">popd</a></li>
+<li><a target="_top" href="/unix_commands/portmap.htm">portmap</a></li>
+<li><a target="_top" href="/unix_commands/postalias.htm">postalias</a></li>
+<li><a target="_top" href="/unix_commands/postcat.htm">postcat</a></li>
+<li><a target="_top" href="/unix_commands/postconf.htm">postconf</a></li>
+<li><a target="_top" href="/unix_commands/postdrop.htm">postdrop</a></li>
+<li><a target="_top" href="/unix_commands/postfix.htm">postfix</a></li>
+<li><a target="_top" href="/unix_commands/postgres.htm">postgres</a></li>
+<li><a target="_top" href="/unix_commands/postkick.htm">postkick</a></li>
+<li><a target="_top" href="/unix_commands/postlock.htm">postlock</a></li>
+<li><a target="_top" href="/unix_commands/postlog.htm">postlog</a></li>
+<li><a target="_top" href="/unix_commands/postmap.htm">postmap</a></li>
+<li><a target="_top" href="/unix_commands/postmaster.htm">postmaster</a></li>
+<li><a target="_top" href="/unix_commands/postqueue.htm">postqueue</a></li>
+<li><a target="_top" href="/unix_commands/postsuper.htm">postsuper</a></li>
+<li><a target="_top" href="/unix_commands/poweroff.htm">poweroff</a></li>
+<li><a target="_top" href="/unix_commands/ppm2tiff.htm">ppm2tiff</a></li>
+<li><a target="_top" href="/unix_commands/pppd.htm">pppd</a></li>
+<li><a target="_top" href="/unix_commands/pppdump.htm">pppdump</a></li>
+<li><a target="_top" href="/unix_commands/pppoe.htm">pppoe</a></li>
+<li><a target="_top" href="/unix_commands/pppstats.htm">pppstats</a></li>
+<li><a target="_top" href="/unix_commands/pr.htm">pr</a></li>
+<li><a target="_top" href="/unix_commands/prelink.htm">prelink</a></li>
+<li><a target="_top" href="/unix_commands/printafm.htm">printafm</a></li>
+<li><a target="_top" href="/unix_commands/printenv.htm">printenv</a></li>
+<li><a target="_top" href="/unix_commands/printf.htm">printf</a></li>
+<li><a target="_top" href="/unix_commands/procmail.htm">procmail</a></li>
+<li><a target="_top" href="/unix_commands/profiles.htm">profiles</a></li>
+<li><a target="_top" href="/unix_commands/protoize.htm">protoize</a></li>
+<li><a target="_top" href="/unix_commands/prove.htm">prove</a></li>
+<li><a target="_top" href="/unix_commands/proxymap.htm">proxymap</a></li>
+<li><a target="_top" href="/unix_commands/ps.htm">ps</a></li>
+<li><a target="_top" href="/unix_commands/psed.htm">psed</a></li>
+<li><a target="_top" href="/unix_commands/psql.htm">psql</a></li>
+<li><a target="_top" href="/unix_commands/pstack.htm">pstack</a></li>
+<li><a target="_top" href="/unix_commands/pstree.htm">pstree</a></li>
+<li><a target="_top" href="/unix_commands/pstruct.htm">pstruct</a></li>
+<li><a target="_top" href="/unix_commands/ptar.htm">ptar</a></li>
+<li><a target="_top" href="/unix_commands/ptardiff.htm">ptardiff</a></li>
+<li><a target="_top" href="/unix_commands/ptx.htm">ptx</a></li>
+<li><a target="_top" href="/unix_commands/pushd.htm">pushd</a></li>
+<li><a target="_top" href="/unix_commands/pvchange.htm">pvchange</a></li>
+<li><a target="_top" href="/unix_commands/pvck.htm">pvck</a></li>
+<li><a target="_top" href="/unix_commands/pvcreate.htm">pvcreate</a></li>
+<li><a target="_top" href="/unix_commands/pvdisplay.htm">pvdisplay</a></li>
+<li><a target="_top" href="/unix_commands/pvmove.htm">pvmove</a></li>
+<li><a target="_top" href="/unix_commands/pvremove.htm">pvremove</a></li>
+<li><a target="_top" href="/unix_commands/pvresize.htm">pvresize</a></li>
+<li><a target="_top" href="/unix_commands/pvs.htm">pvs</a></li>
+<li><a target="_top" href="/unix_commands/pvscan.htm">pvscan</a></li>
+<li><a target="_top" href="/unix_commands/pwck.htm">pwck</a></li>
+<li><a target="_top" href="/unix_commands/pwconv.htm">pwconv</a></li>
+<li><a target="_top" href="/unix_commands/pwd.htm">pwd</a></li>
+<li><a target="_top" href="/unix_commands/pwdx.htm">pwdx</a></li>
+<li><a target="_top" href="/unix_commands/pwmconfig.htm">pwmconfig</a></li>
+<li><a target="_top" href="/unix_commands/pwunconv.htm">pwunconv</a></li>
+<li><a target="_top" href="/unix_commands/python.htm">python</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">Q</li>
+<li><a target="_top" href="/unix_commands/qmgr.htm">qmgr</a></li>
+<li><a target="_top" href="/unix_commands/qmqpd.htm">qmqpd</a></li>
+<li><a target="_top" href="/unix_commands/qshape.htm">qshape</a></li>
+<li><a target="_top" href="/unix_commands/quota.htm">quota</a></li>
+<li><a target="_top" href="/unix_commands/quotacheck.htm">quotacheck</a></li>
+<li><a target="_top" href="/unix_commands/quotaon.htm">quotaon</a></li>
+<li><a target="_top" href="/unix_commands/quotastats.htm">quotastats</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">R</li>
+<li><a target="_top" href="/unix_commands/racoon.htm">racoon</a></li>
+<li><a target="_top" href="/unix_commands/racoonctl.htm">racoonctl</a></li>
+<li><a target="_top" href="/unix_commands/ramsize.htm">ramsize</a></li>
+<li><a target="_top" href="/unix_commands/ranlib.htm">ranlib</a></li>
+<li><a target="_top" href="/unix_commands/ras2tiff.htm">ras2tiff</a></li>
+<li><a target="_top" href="/unix_commands/raw.htm">raw</a></li>
+<li><a target="_top" href="/unix_commands/raw2tiff.htm">raw2tiff</a></li>
+<li><a target="_top" href="/unix_commands/rawdevices.htm">rawdevices</a></li>
+<li><a target="_top" href="/unix_commands/rcp.htm">rcp</a></li>
+<li><a target="_top" href="/unix_commands/rdate.htm">rdate</a></li>
+<li><a target="_top" href="/unix_commands/rdev.htm">rdev</a></li>
+<li><a target="_top" href="/unix_commands/rdisc.htm">rdisc</a></li>
+<li><a target="_top" href="/unix_commands/rdist.htm">rdist</a></li>
+<li><a target="_top" href="/unix_commands/rdjpgcom.htm">rdjpgcom</a></li>
+<li><a target="_top" href="/unix_commands/rdump.htm">rdump</a></li>
+<li><a target="_top" href="/unix_commands/read.htm">read</a></li>
+<li><a target="_top" href="/unix_commands/readelf.htm">readelf</a></li>
+<li><a target="_top" href="/unix_commands/readlink.htm">readlink</a></li>
+<li><a target="_top" href="/unix_commands/readonly.htm">readonly</a></li>
+<li><a target="_top" href="/unix_commands/readprofile.htm">readprofile</a></li>
+<li><a target="_top" href="/unix_commands/reboot.htm">reboot</a></li>
+<li><a target="_top" href="/unix_commands/reconstruct.htm">reconstruct</a></li>
+<li><a target="_top" href="/unix_commands/recountdiff.htm">recountdiff</a></li>
+<li><a target="_top" href="/unix_commands/red.htm">red</a></li>
+<li><a target="_top" href="/unix_commands/rediff.htm">rediff</a></li>
+<li><a target="_top" href="/unix_commands/refer.htm">refer</a></li>
+<li><a target="_top" href="/unix_commands/reindexdb.htm">reindexdb</a></li>
+<li><a target="_top" href="/unix_commands/reject.htm">reject</a></li>
+<li><a target="_top" href="/unix_commands/rename.htm">rename</a></li>
+<li><a target="_top" href="/unix_commands/renice.htm">renice</a></li>
+<li><a target="_top" href="/unix_commands/replace.htm">replace</a></li>
+<li><a target="_top" href="/unix_commands/repquota.htm">repquota</a></li>
+<li><a target="_top" href="/unix_commands/req.htm">req</a></li>
+<li><a target="_top" href="/unix_commands/reset.htm">reset</a></li>
+<li><a target="_top" href="/unix_commands/resize2fs.htm">resize2fs</a></li>
+<li><a target="_top" href="/unix_commands/resizecons.htm">resizecons</a></li>
+<li><a target="_top" href="/unix_commands/resolveip.htm">resolveip</a></li>
+<li><a target="_top" href="/unix_commands/restore.htm">restore</a></li>
+<li><a target="_top" href="/unix_commands/restorecon.htm">restorecon</a></li>
+<li><a target="_top" href="/unix_commands/restorecond.htm">restorecond</a></li>
+<li><a target="_top" href="/unix_commands/return.htm">return</a></li>
+<li><a target="_top" href="/unix_commands/rev.htm">rev</a></li>
+<li><a target="_top" href="/unix_commands/revpath.htm">revpath</a></li>
+<li><a target="_top" href="/unix_commands/rexec.htm">rexec</a></li>
+<li><a target="_top" href="/unix_commands/rfcomm.htm">rfcomm</a></li>
+<li><a target="_top" href="/unix_commands/rgb2ycbcr.htm">rgb2ycbcr</a></li>
+<li><a target="_top" href="/unix_commands/rlogin.htm">rlogin</a></li>
+<li><a target="_top" href="/unix_commands/rm.htm">rm</a></li>
+<li><a target="_top" href="/unix_commands/rmdir.htm">rmdir</a></li>
+<li><a target="_top" href="/unix_commands/rmid.htm">rmid</a></li>
+<li><a target="_top" href="/unix_commands/rmmod.htm">rmmod</a></li>
+<li><a target="_top" href="/unix_commands/rmnews.htm">rmnews</a></li>
+<li><a target="_top" href="/unix_commands/rmt.htm">rmt</a></li>
+<li><a target="_top" href="/unix_commands/rnano.htm">rnano</a></li>
+<li><a target="_top" href="/unix_commands/rootflags.htm">rootflags</a></li>
+<li><a target="_top" href="/unix_commands/rotatelogs.htm">rotatelogs</a></li>
+<li><a target="_top" href="/unix_commands/route.htm">route</a></li>
+<li><a target="_top" href="/unix_commands/rpcclient.htm">rpcclient</a></li>
+<li><a target="_top" href="/unix_commands/rpcdebug.htm">rpcdebug</a></li>
+<li><a target="_top" href="/unix_commands/rpcgen.htm">rpcgen</a></li>
+<li><a target="_top" href="/unix_commands/rpcinfo.htm">rpcinfo</a></li>
+<li><a target="_top" href="/unix_commands/rsa.htm">rsa</a></li>
+<li><a target="_top" href="/unix_commands/rsautl.htm">rsautl</a></li>
+<li><a target="_top" href="/unix_commands/rsh.htm">rsh</a></li>
+<li><a target="_top" href="/unix_commands/rsvg.htm">rsvg</a></li>
+<li><a target="_top" href="/unix_commands/rsync.htm">rsync</a></li>
+<li><a target="_top" href="/unix_commands/ruby.htm">ruby</a></li>
+<li><a target="_top" href="/unix_commands/runcon.htm">runcon</a></li>
+<li><a target="_top" href="/unix_commands/runlevel.htm">runlevel</a></li>
+<li><a target="_top" href="/unix_commands/runuser.htm">runuser</a></li>
+<li><a target="_top" href="/unix_commands/rvi.htm">rvi</a></li>
+<li><a target="_top" href="/unix_commands/rview.htm">rview</a></li>
+<li><a target="_top" href="/unix_commands/rvim.htm">rvim</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">S</li>
+<li><a target="_top" href="/unix_commands/safe_mysqld.htm">safe_mysqld</a></li>
+<li><a target="_top" href="/unix_commands/saslauthd.htm">saslauthd</a></li>
+<li><a target="_top" href="/unix_commands/scache.htm">scache</a></li>
+<li><a target="_top" href="/unix_commands/scp.htm">scp</a></li>
+<li><a target="_top" href="/unix_commands/script.htm">script</a></li>
+<li><a target="_top" href="/unix_commands/sdiff.htm">sdiff</a></li>
+<li><a target="_top" href="/unix_commands/sdpd.htm">sdpd</a></li>
+<li><a target="_top" href="/unix_commands/sdptool.htm">sdptool</a></li>
+<li><a target="_top" href="/unix_commands/sechecker.htm">sechecker</a></li>
+<li><a target="_top" href="/unix_commands/secon.htm">secon</a></li>
+<li><a target="_top" href="/unix_commands/sed.htm">sed</a></li>
+<li><a target="_top" href="/unix_commands/sediff.htm">sediff</a></li>
+<li><a target="_top" href="/unix_commands/seinfo.htm">seinfo</a></li>
+<li><a target="_top" href="/unix_commands/selinux.htm">selinux</a></li>
+<li><a target="_top" href="/unix_commands/selinuxenabled.htm">selinuxenabled</a></li>
+<li><a target="_top" href="/unix_commands/semanage.htm">semanage</a></li>
+<li><a target="_top" href="/unix_commands/sensors.htm">sensors</a></li>
+<li><a target="_top" href="/unix_commands/seq.htm">seq</a></li>
+<li><a target="_top" href="/unix_commands/serialver.htm">serialver</a></li>
+<li><a target="_top" href="/unix_commands/servertool.htm">servertool</a></li>
+<li><a target="_top" href="/unix_commands/service.htm">service</a></li>
+<li><a target="_top" href="/unix_commands/sesearch.htm">sesearch</a></li>
+<li><a target="_top" href="/unix_commands/sestatus.htm">sestatus</a></li>
+<li><a target="_top" href="/unix_commands/set.htm">set</a></li>
+<li><a target="_top" href="/unix_commands/setarch.htm">setarch</a></li>
+<li><a target="_top" href="/unix_commands/setenforce.htm">setenforce</a></li>
+<li><a target="_top" href="/unix_commands/setfacl.htm">setfacl</a></li>
+<li><a target="_top" href="/unix_commands/setfattr.htm">setfattr</a></li>
+<li><a target="_top" href="/unix_commands/setfiles.htm">setfiles</a></li>
+<li><a target="_top" href="/unix_commands/setfont.htm">setfont</a></li>
+<li><a target="_top" href="/unix_commands/setkey.htm">setkey</a></li>
+<li><a target="_top" href="/unix_commands/setkeycodes.htm">setkeycodes</a></li>
+<li><a target="_top" href="/unix_commands/setleds.htm">setleds</a></li>
+<li><a target="_top" href="/unix_commands/setmetamode.htm">setmetamode</a></li>
+<li><a target="_top" href="/unix_commands/setpci.htm">setpci</a></li>
+<li><a target="_top" href="/unix_commands/setquota.htm">setquota</a></li>
+<li><a target="_top" href="/unix_commands/setsebool.htm">setsebool</a></li>
+<li><a target="_top" href="/unix_commands/setserial.htm">setserial</a></li>
+<li><a target="_top" href="/unix_commands/setsid.htm">setsid</a></li>
+<li><a target="_top" href="/unix_commands/setterm.htm">setterm</a></li>
+<li><a target="_top" href="/unix_commands/sfdisk.htm">sfdisk</a></li>
+<li><a target="_top" href="/unix_commands/sftp.htm">sftp</a></li>
+<li><a target="_top" href="/unix_commands/sg.htm">sg</a></li>
+<li><a target="_top" href="/unix_commands/sgpio.htm">sgpio</a></li>
+<li><a target="_top" href="/unix_commands/sh.htm">sh</a></li>
+<li><a target="_top" href="/unix_commands/sha.htm">sha</a></li>
+<li><a target="_top" href="/unix_commands/shift.htm">shift</a></li>
+<li><a target="_top" href="/unix_commands/shopt.htm">shopt</a></li>
+<li><a target="_top" href="/unix_commands/showkey.htm">showkey</a></li>
+<li><a target="_top" href="/unix_commands/showmount.htm">showmount</a></li>
+<li><a target="_top" href="/unix_commands/showq.htm">showq</a></li>
+<li><a target="_top" href="/unix_commands/shred.htm">shred</a></li>
+<li><a target="_top" href="/unix_commands/shutdown.htm">shutdown</a></li>
+<li><a target="_top" href="/unix_commands/sieveshell.htm">sieveshell</a></li>
+<li><a target="_top" href="/unix_commands/sivtest.htm">sivtest</a></li>
+<li><a target="_top" href="/unix_commands/size.htm">size</a></li>
+<li><a target="_top" href="/unix_commands/skill.htm">skill</a></li>
+<li><a target="_top" href="/unix_commands/slabtop.htm">slabtop</a></li>
+<li><a target="_top" href="/unix_commands/slattach.htm">slattach</a></li>
+<li><a target="_top" href="/unix_commands/sleep.htm">sleep</a></li>
+<li><a target="_top" href="/unix_commands/sln.htm">sln</a></li>
+<li><a target="_top" href="/unix_commands/slogin.htm">slogin</a></li>
+<li><a target="_top" href="/unix_commands/smartctl.htm">smartctl</a></li>
+<li><a target="_top" href="/unix_commands/smartd.htm">smartd</a></li>
+<li><a target="_top" href="/unix_commands/smbcacls.htm">smbcacls</a></li>
+<li><a target="_top" href="/unix_commands/smbclient.htm">smbclient</a></li>
+<li><a target="_top" href="/unix_commands/smbcontrol.htm">smbcontrol</a></li>
+<li><a target="_top" href="/unix_commands/smbcquotas.htm">smbcquotas</a></li>
+<li><a target="_top" href="/unix_commands/smbd.htm">smbd</a></li>
+<li><a target="_top" href="/unix_commands/smbget.htm">smbget</a></li>
+<li><a target="_top" href="/unix_commands/smbpasswd.htm">smbpasswd</a></li>
+<li><a target="_top" href="/unix_commands/smbspool.htm">smbspool</a></li>
+<li><a target="_top" href="/unix_commands/smbstatus.htm">smbstatus</a></li>
+<li><a target="_top" href="/unix_commands/smbtar.htm">smbtar</a></li>
+<li><a target="_top" href="/unix_commands/smbtree.htm">smbtree</a></li>
+<li><a target="_top" href="/unix_commands/smime.htm">smime</a></li>
+<li><a target="_top" href="/unix_commands/smmapd.htm">smmapd</a></li>
+<li><a target="_top" href="/unix_commands/smtp.htm">smtp</a></li>
+<li><a target="_top" href="/unix_commands/smtpd.htm">smtpd</a></li>
+<li><a target="_top" href="/unix_commands/smtptest.htm">smtptest</a></li>
+<li><a target="_top" href="/unix_commands/snice.htm">snice</a></li>
+<li><a target="_top" href="/unix_commands/snmpd.htm">snmpd</a></li>
+<li><a target="_top" href="/unix_commands/snmptrapd.htm">snmptrapd</a></li>
+<li><a target="_top" href="/unix_commands/sntp.htm">sntp</a></li>
+<li><a target="_top" href="/unix_commands/soelim.htm">soelim</a></li>
+<li><a target="_top" href="/unix_commands/sort.htm">sort</a></li>
+<li><a target="_top" href="/unix_commands/sosreport.htm">sosreport</a></li>
+<li><a target="_top" href="/unix_commands/source.htm">source</a></li>
+<li><a target="_top" href="/unix_commands/spam.htm">spam</a></li>
+<li><a target="_top" href="/unix_commands/spamassassin.htm">spamassassin</a></li>
+<li><a target="_top" href="/unix_commands/spamc.htm">spamc</a></li>
+<li><a target="_top" href="/unix_commands/spamd.htm">spamd</a></li>
+<li><a target="_top" href="/unix_commands/spawn.htm">spawn</a></li>
+<li><a target="_top" href="/unix_commands/speed.htm">speed</a></li>
+<li><a target="_top" href="/unix_commands/spent.htm">spent</a></li>
+<li><a target="_top" href="/unix_commands/spkac.htm">spkac</a></li>
+<li><a target="_top" href="/unix_commands/splain.htm">splain</a></li>
+<li><a target="_top" href="/unix_commands/split.htm">split</a></li>
+<li><a target="_top" href="/unix_commands/splitdiff.htm">splitdiff</a></li>
+<li><a target="_top" href="/unix_commands/sprof.htm">sprofa></a></li>
+<li><a target="_top" href="/unix_commands/sqlite3.htm">sqlite3</a></li>
+<li><a target="_top" href="/unix_commands/squatter.htm">squatter</a></li>
+<li><a target="_top" href="/unix_commands/ssh-add.htm">ssh-add</a></li>
+<li><a target="_top" href="/unix_commands/ssh-agent.htm">ssh-agent</a></li>
+<li><a target="_top" href="/unix_commands/ssh-copy-id.htm">ssh-copy-id</a></li>
+<li><a target="_top" href="/unix_commands/ssh-keygen.htm">ssh-keygen</a></li>
+<li><a target="_top" href="/unix_commands/ssh-keyscan.htm">ssh-keyscan</a></li>
+<li><a target="_top" href="/unix_commands/ssh-keysign.htm">ssh-keysign</a></li>
+<li><a target="_top" href="/unix_commands/ssh.htm">ssh</a></li>
+<li><a target="_top" href="/unix_commands/sshd.htm">sshd</a></li>
+<li><a target="_top" href="/unix_commands/sslpasswd.htm">sslpasswd</a></li>
+<li><a target="_top" href="/unix_commands/sslrand.htm">sslrand</a></li>
+<li><a target="_top" href="/unix_commands/sslswamp.htm">sslswamp</a></li>
+<li><a target="_top" href="/unix_commands/stat.htm">stat</a></li>
+<li><a target="_top" href="/unix_commands/statd.htm">statd</a></li>
+<li><a target="_top" href="/unix_commands/strace.htm">strace</a></li>
+<li><a target="_top" href="/unix_commands/strings.htm">strings</a></li>
+<li><a target="_top" href="/unix_commands/strip.htm">strip</a></li>
+<li><a target="_top" href="/unix_commands/stty.htm">stty</a></li>
+<li><a target="_top" href="/unix_commands/stunnel.htm">stunnel</a></li>
+<li><a target="_top" href="/unix_commands/su.htm">su</a></li>
+<li><a target="_top" href="/unix_commands/sudo.htm">sudo</a></li>
+<li><a target="_top" href="/unix_commands/sudoedit.htm">sudoedit</a></li>
+<li><a target="_top" href="/unix_commands/suexec.htm">suexec</a></li>
+<li><a target="_top" href="/unix_commands/sulogin.htm">sulogin</a></li>
+<li><a target="_top" href="/unix_commands/sum.htm">sum</a></li>
+<li><a target="_top" href="/unix_commands/suspend.htm">suspend</a></li>
+<li><a target="_top" href="/unix_commands/svcgssd.htm">svcgssd</a></li>
+<li><a target="_top" href="/unix_commands/swapoff.htm">swapoff</a></li>
+<li><a target="_top" href="/unix_commands/swapon.htm">swapon</a></li>
+<li><a target="_top" href="/unix_commands/symlinks.htm">symlinks</a></li>
+<li><a target="_top" href="/unix_commands/sync.htm">sync</a></li>
+<li><a target="_top" href="/unix_commands/sysctl.htm">sysctl</a></li>
+<li><a target="_top" href="/unix_commands/sysklogd.htm">sysklogd</a></li>
+<li><a target="_top" href="/unix_commands/syslogd.htm">syslogd</a></li>
+<li><a target="_top" href="/unix_commands/systool.htm">systool</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">T</li>
+<li><a target="_top" href="/unix_commands/tac.htm">tac</a></li>
+<li><a target="_top" href="/unix_commands/tack.htm">tack</a></li>
+<li><a target="_top" href="/unix_commands/tail.htm">tail</a></li>
+<li><a target="_top" href="/unix_commands/tailf.htm">tailf</a></li>
+<li><a target="_top" href="/unix_commands/talk.htm">talk</a></li>
+<li><a target="_top" href="/unix_commands/tar.htm">tar</a></li>
+<li><a target="_top" href="/unix_commands/taskset.htm">taskset</a></li>
+<li><a target="_top" href="/unix_commands/tbl.htm">tbl</a></li>
+<li><a target="_top" href="/unix_commands/tclsh.htm">tclsh</a></li>
+<li><a target="_top" href="/unix_commands/tcpd.htm">tcpd</a></li>
+<li><a target="_top" href="/unix_commands/tcpdump.htm">tcpdump</a></li>
+<li><a target="_top" href="/unix_commands/tcpslice.htm">tcpslice</a></li>
+<li><a target="_top" href="/unix_commands/tcsh.htm">tcsh</a></li>
+<li><a target="_top" href="/unix_commands/tdbbackup.htm">tdbbackup</a></li>
+<li><a target="_top" href="/unix_commands/tdbdump.htm">tdbdump</a></li>
+<li><a target="_top" href="/unix_commands/tdbtool.htm">tdbtool</a></li>
+<li><a target="_top" href="/unix_commands/tee.htm">tee</a></li>
+<li><a target="_top" href="/unix_commands/telinit.htm">telinit</a></li>
+<li><a target="_top" href="/unix_commands/telnet.htm">telnet</a></li>
+<li><a target="_top" href="/unix_commands/test.htm">test</a></li>
+<li><a target="_top" href="/unix_commands/testparm.htm">testparm</a></li>
+<li><a target="_top" href="/unix_commands/tfmtodit.htm">tfmtodit</a></li>
+<li><a target="_top" href="/unix_commands/tftp.htm">tftp</a></li>
+<li><a target="_top" href="/unix_commands/thumbnail.htm">thumbnail</a></li>
+<li><a target="_top" href="/unix_commands/tic.htm">tic</a></li>
+<li><a target="_top" href="/unix_commands/tiff2bw.htm">tiff2bw</a></li>
+<li><a target="_top" href="/unix_commands/tiff2pdf.htm">tiff2pdf</a></li>
+<li><a target="_top" href="/unix_commands/tiff2ps.htm">tiff2ps</a></li>
+<li><a target="_top" href="/unix_commands/tiff2rgba.htm">tiff2rgba</a></li>
+<li><a target="_top" href="/unix_commands/tiffcmp.htm">tiffcmp</a></li>
+<li><a target="_top" href="/unix_commands/tiffcp.htm">tiffcp</a></li>
+<li><a target="_top" href="/unix_commands/tiffdither.htm">tiffdither</a></li>
+<li><a target="_top" href="/unix_commands/tiffdump.htm">tiffdump</a></li>
+<li><a target="_top" href="/unix_commands/tifficc.htm">tifficc</a></li>
+<li><a target="_top" href="/unix_commands/tiffinfo.htm">tiffinfo</a></li>
+<li><a target="_top" href="/unix_commands/tiffmedian.htm">tiffmedian</a></li>
+<li><a target="_top" href="/unix_commands/tiffset.htm">tiffset</a></li>
+<li><a target="_top" href="/unix_commands/tiffsplit.htm">tiffsplit</a></li>
+<li><a target="_top" href="/unix_commands/time.htm">time</a></li>
+<li><a target="_top" href="/unix_commands/times.htm">times</a></li>
+<li><a target="_top" href="/unix_commands/timsieved.htm">timsieved</a></li>
+<li><a target="_top" href="/unix_commands/tload.htm">tload</a></li>
+<li><a target="_top" href="/unix_commands/tls_prune.htm">tls_prune</a></li>
+<li><a target="_top" href="/unix_commands/tlsmgr.htm">tlsmgr</a></li>
+<li><a target="_top" href="/unix_commands/tmpwatch.htm">tmpwatch</a></li>
+<li><a target="_top" href="/unix_commands/tnameserv.htm">tnameserv</a></li>
+<li><a target="_top" href="/unix_commands/toe.htm">toe</a></li>
+<li><a target="_top" href="/unix_commands/top.htm">top</a></li>
+<li><a target="_top" href="/unix_commands/touch.htm">touch</a></li>
+<li><a target="_top" href="/unix_commands/tput.htm">tput</a></li>
+<li><a target="_top" href="/unix_commands/tr.htm">tr</a></li>
+<li><a target="_top" href="/unix_commands/trace.htm">trace</a></li>
+<li><a target="_top" href="/unix_commands/tracepath.htm">tracepath</a></li>
+<li><a target="_top" href="/unix_commands/traceroute.htm">traceroute</a></li>
+<li><a target="_top" href="/unix_commands/trap.htm">trap</a></li>
+<li><a target="_top" href="/unix_commands/tree.htm">tree</a></li>
+<li><a target="_top" href="/unix_commands/troff.htm">troff</a></li>
+<li><a target="_top" href="/unix_commands/true.htm">TRUE</a></li>
+<li><a target="_top" href="/unix_commands/tset.htm">tset</a></li>
+<li><a target="_top" href="/unix_commands/tsort.htm">tsort</a></li>
+<li><a target="_top" href="/unix_commands/tty.htm">tty</a></li>
+<li><a target="_top" href="/unix_commands/tune2fs.htm">tune2fs</a></li>
+<li><a target="_top" href="/unix_commands/tunelp.htm">tunelp</a></li>
+<li><a target="_top" href="/unix_commands/type.htm">type</a></li>
+<li><a target="_top" href="/unix_commands/typeset.htm">typeset</a></li>
+<li><a target="_top" href="/unix_commands/tzselect.htm">tzselect</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">U</li>
+<li><a target="_top" href="/unix_commands/ucs2any.htm">ucs2any</a></li>
+<li><a target="_top" href="/unix_commands/udevcontrol.htm">udevcontrol</a></li>
+<li><a target="_top" href="/unix_commands/udevd.htm">udevd</a></li>
+<li><a target="_top" href="/unix_commands/udevinfo.htm">udevinfo</a></li>
+<li><a target="_top" href="/unix_commands/udevmonitor.htm">udevmonitor</a></li>
+<li><a target="_top" href="/unix_commands/udevsettle.htm">udevsettle</a></li>
+<li><a target="_top" href="/unix_commands/udevtest.htm">udevtest</a></li>
+<li><a target="_top" href="/unix_commands/udevtrigger.htm">udevtrigger</a></li>
+<li><a target="_top" href="/unix_commands/ul.htm">ul</a></li>
+<li><a target="_top" href="/unix_commands/ulimit.htm">ulimit</a></li>
+<li><a target="_top" href="/unix_commands/umap.htm">umap</a></li>
+<li><a target="_top" href="/unix_commands/umask.htm">umask</a></li>
+<li><a target="_top" href="/unix_commands/umount.htm">umount</a></li>
+<li><a target="_top" href="/unix_commands/unalias.htm">unalias</a></li>
+<li><a target="_top" href="/unix_commands/uname.htm">uname</a></li>
+<li><a target="_top" href="/unix_commands/unexpand.htm">unexpand</a></li>
+<li><a target="_top" href="/unix_commands/unexpunge.htm">unexpunge</a></li>
+<li><a target="_top" href="/unix_commands/uniq.htm">uniq</a></li>
+<li><a target="_top" href="/unix_commands/unix2dos.htm">unix2dos</a></li>
+<li><a target="_top" href="/unix_commands/unlink.htm">unlink</a></li>
+<li><a target="_top" href="/unix_commands/unprotoize.htm">unprotoize</a></li>
+<li><a target="_top" href="/unix_commands/unset.htm">unset</a></li>
+<li><a target="_top" href="/unix_commands/unwrapdiff.htm">unwrapdiff</a></li>
+<li><a target="_top" href="/unix_commands/unzip.htm">unzip</a></li>
+<li><a target="_top" href="/unix_commands/unzipsfx.htm">unzipsfx</a></li>
+<li><a target="_top" href="/unix_commands/updatedb.htm">updatedb</a></li>
+<li><a target="_top" href="/unix_commands/uptime.htm">uptime</a></li>
+<li><a target="_top" href="/unix_commands/urlview.htm">urlview</a></li>
+<li><a target="_top" href="/unix_commands/useradd.htm">useradd</a></li>
+<li><a target="_top" href="/unix_commands/userdel.htm">userdel</a></li>
+<li><a target="_top" href="/unix_commands/userhelper.htm">userhelper</a></li>
+<li><a target="_top" href="/unix_commands/userinfo.htm">userinfo</a></li>
+<li><a target="_top" href="/unix_commands/usermod.htm">usermod</a></li>
+<li><a target="_top" href="/unix_commands/usermount.htm">usermount</a></li>
+<li><a target="_top" href="/unix_commands/usernetctl.htm">usernetctl</a></li>
+<li><a target="_top" href="/unix_commands/userpasswd.htm">userpasswd</a></li>
+<li><a target="_top" href="/unix_commands/users.htm">users</a></li>
+<li><a target="_top" href="/unix_commands/usleep.htm">usleep</a></li>
+<li><a target="_top" href="/unix_commands/uuidgen.htm">uuidgen</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">V</li>
+<li><a target="_top" href="/unix_commands/vacuumdb.htm">vacuumdb</a></li>
+<li><a target="_top" href="/unix_commands/vbetool.htm">vbetool</a></li>
+<li><a target="_top" href="/unix_commands/vconfig.htm">vconfig</a></li>
+<li><a target="_top" href="/unix_commands/vdir.htm">vdir</a></li>
+<li><a target="_top" href="/unix_commands/verify.htm">verify</a></li>
+<li><a target="_top" href="/unix_commands/version.htm">version</a></li>
+<li><a target="_top" href="/unix_commands/vfstest.htm">vfstest</a></li>
+<li><a target="_top" href="/unix_commands/vi.htm">vi</a></li>
+<li><a target="_top" href="/unix_commands/vidmode.htm">vidmode</a></li>
+<li><a target="_top" href="/unix_commands/view.htm">view</a></li>
+<li><a target="_top" href="/unix_commands/vigr.htm">vigr</a></li>
+<li><a target="_top" href="/unix_commands/vim.htm">vim</a></li>
+<li><a target="_top" href="/unix_commands/vimdiff.htm">vimdiff</a></li>
+<li><a target="_top" href="/unix_commands/vimtutor.htm">vimtutor</a></li>
+<li><a target="_top" href="/unix_commands/vipw.htm">vipw</a></li>
+<li><a target="_top" href="/unix_commands/virtual.htm">virtual</a></li>
+<li><a target="_top" href="/unix_commands/visudo.htm">visudo</a></li>
+<li><a target="_top" href="/unix_commands/vmstat.htm">vmstat</a></li>
+<li><a target="_top" href="/unix_commands/vol_id.htm">vol_id</a></li>
+<li><a target="_top" href="/unix_commands/volname.htm">volname</a></li>
+<li><a target="_top" href="/unix_commands/vpddecode.htm">vpddecode</a></li>
+<li><a target="_top" href="/unix_commands/vsftpd.htm">vsftpd</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">W</li>
+<li><a target="_top" href="/unix_commands/w.htm">w</a></li>
+<li><a target="_top" href="/unix_commands/wait.htm">wait</a></li>
+<li><a target="_top" href="/unix_commands/wall.htm">wall</a></li>
+<li><a target="_top" href="/unix_commands/warnquota.htm">warnquota</a></li>
+<li><a target="_top" href="/unix_commands/watch.htm">watch</a></li>
+<li><a target="_top" href="/unix_commands/wbinfo.htm">wbinfo</a></li>
+<li><a target="_top" href="/unix_commands/wc.htm">wc</a></li>
+<li><a target="_top" href="/unix_commands/webalizer.htm">webalizer</a></li>
+<li><a target="_top" href="/unix_commands/wftopfa.htm">wftopfa</a></li>
+<li><a target="_top" href="/unix_commands/wget.htm">wget</a></li>
+<li><a target="_top" href="/unix_commands/whatis.htm">whatis</a></li>
+<li><a target="_top" href="/unix_commands/whereis.htm">whereis</a></li>
+<li><a target="_top" href="/unix_commands/which.htm">which</a></li>
+<li><a target="_top" href="/unix_commands/whiptail.htm">whiptail</a></li>
+<li><a target="_top" href="/unix_commands/who.htm">who</a></li>
+<li><a target="_top" href="/unix_commands/whoami.htm">whoami</a></li>
+<li><a target="_top" href="/unix_commands/whois.htm">whois</a></li>
+<li><a target="_top" href="/unix_commands/winbindd.htm">winbindd</a></li>
+<li><a target="_top" href="/unix_commands/wish.htm">wish</a></li>
+<li><a target="_top" href="/unix_commands/write.htm">write</a></li>
+<li><a target="_top" href="/unix_commands/wrjpgcom.htm">wrjpgcom</a></li>
+<li><a target="_top" href="/unix_commands/wtpt.htm">wtpt</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">X</li>
+<li><a target="_top" href="/unix_commands/xargs.htm">xargs</a></li>
+<li><a target="_top" href="/unix_commands/xfs.htm">xfs</a></li>
+<li><a target="_top" href="/unix_commands/xgettext.htm">xgettext</a></li>
+<li><a target="_top" href="/unix_commands/xglyph.htm">xglyph</a></li>
+<li><a target="_top" href="/unix_commands/xmkmf.htm">xmkmf</a></li>
+<li><a target="_top" href="/unix_commands/xmlcatalog.htm">xmlcatalog</a></li>
+<li><a target="_top" href="/unix_commands/xmllint.htm">xmllint</a></li>
+<li><a target="_top" href="/unix_commands/xmlwf.htm">xmlwf</a></li>
+<li><a target="_top" href="/unix_commands/xqmstats.htm">xqmstats</a></li>
+<li><a target="_top" href="/unix_commands/xsltproc.htm">xsltproc</a></li>
+<li><a target="_top" href="/unix_commands/xsubpp.htm">xsubpp</a></li>
+<li><a target="_top" href="/unix_commands/xulrunner.htm">xulrunner</a></li>
+<li><a target="_top" href="/unix_commands/xxd.htm">xxd</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">Y</li>
+<li><a target="_top" href="/unix_commands/yes.htm">yes</a></li>
+<li><a target="_top" href="/unix_commands/ypbind.htm">ypbind</a></li>
+<li><a target="_top" href="/unix_commands/ypcat.htm">ypcat</a></li>
+<li><a target="_top" href="/unix_commands/ypchfn.htm">ypchfn</a></li>
+<li><a target="_top" href="/unix_commands/ypchsh.htm">ypchsh</a></li>
+<li><a target="_top" href="/unix_commands/ypmatch.htm">ypmatch</a></li>
+<li><a target="_top" href="/unix_commands/yppasswd.htm">yppasswd</a></li>
+<li><a target="_top" href="/unix_commands/yppoll.htm">yppoll</a></li>
+<li><a target="_top" href="/unix_commands/ypset.htm">ypset</a></li>
+<li><a target="_top" href="/unix_commands/yptest.htm">yptest</a></li>
+<li><a target="_top" href="/unix_commands/ypwhich.htm">ypwhich</a></li>
+<li><a target="_top" href="/unix_commands/yum.htm">yum</a></li>
+</ul>
+<ul class="toc chapters">
+<li class="heading">Z</li>
+<li><a target="_top" href="/unix_commands/zcat.htm">zcat</a></li>
+<li><a target="_top" href="/unix_commands/zcmp.htm">zcmp</a></li>
+<li><a target="_top" href="/unix_commands/zdiff.htm">zdiff</a></li>
+<li><a target="_top" href="/unix_commands/zdump.htm">zdump</a></li>
+<li><a target="_top" href="/unix_commands/zforce.htm">zforce</a></li>
+<li><a target="_top" href="/unix_commands/zgrep.htm">zgrep</a></li>
+<li><a target="_top" href="/unix_commands/zic.htm">zic</a></li>
+<li><a target="_top" href="/unix_commands/zip.htm">zip</a></li>
+<li><a target="_top" href="/unix_commands/zipgrep.htm">zipgrep</a></li>
+<li><a target="_top" href="/unix_commands/zipinfo.htm">zipinfo</a></li>
+<li><a target="_top" href="/unix_commands/zless.htm">zless</a></li>
+<li><a target="_top" href="/unix_commands/zmore.htm">zmore</a></li>
+<li><a target="_top" href="/unix_commands/znew.htm">znew</a></li>
+<li><a target="_top" href="/unix_commands/zsoelim.htm">zsoelim</a></li>
+</ul>
+</div>
+</div>
+<ul class="toc reading">
+<li class="sreading">Selected Reading</li>
+<li><a target="_top" href="/upsc_ias_exams.htm">UPSC IAS Exams Notes</a></li>
+<li><a target="_top" href="/developers_best_practices/index.htm">Developer's Best Practices</a></li>
+<li><a target="_top" href="/questions_and_answers.htm">Questions and Answers</a></li>
+<li><a target="_top" href="/effective_resume_writing.htm">Effective Resume Writing</a></li>
+<li><a target="_top" href="/hr_interview_questions/index.htm">HR Interview Questions</a></li>
+<li><a target="_top" href="/computer_glossary.htm">Computer Glossary</a></li>
+<li><a target="_top" href="/computer_whoiswho.htm">Who is Who</a></li>
+</ul>
+<div id="stickyparent">
+<div style="height:250px;width:300px;" id="sticky-ad">
+<div id="430c9911-782f-495d-88f9-69f58ca8c9a4" class="_ap_apex_ad" >
+<script>
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+adpushup.triggerAd("430c9911-782f-495d-88f9-69f58ca8c9a4");
+});
+</script>
+</div>
+</div>
+</div>
+</div>
+<!-- Tutorial ToC Ends Here -->
+<!-- Tutorial Content Starts Here -->
+<div class="mui-col-md-6 tutorial-content">
+<h1>curl - Unix, Linux Command</h1>
+<hr>
+<div id="google-top-ads">
+<div class="top-ad-heading">Advertisements</div>
+<div style="text-align:center" class="google-top-ads">
+<div id="adp_top_ads" style="text-align:center!important;min-height:90px!important"></div>
+<script>
+     var adPos = document.getElementById('adp_top_ads');
+     var ad_id_720 = "8014640d-fd34-4b2e-9b1b-cc67234a2325";
+     var ad_id_650 = "2d1bb2c4-eb72-471d-9c80-1bf5514728c1";
+     var ad_id_300 = "df94a1a9-ae2f-432d-9a92-d93823ff4503";
+     var width = window.innerWidth;
+     var ad_id = ad_id_720;
+     if( width <= 768 ){
+        ad_id =  ad_id_300;
+     }else if( width <= 1435 ){
+        ad_id =  ad_id_650;
+     }
+     adPos.innerHTML = '<div id="' + ad_id + '" class="_ap_apex_ad"></div>';
+     var adpushup = adpushup || {};
+     adpushup.que = adpushup.que || [];
+     adpushup.que.push(function() {
+     adpushup.triggerAd(ad_id);
+     });
+</script>
+</div>
+</div>
+<br>
+<div class="mui-container-fluid button-borders">
+<div class="pre-btn">
+<a href="/unix_commands/cupsd.htm"><i class="fal fa-chevron-circle-left"></i> Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="/unix_commands/cut.htm">Next Page <i class="fal fa-chevron-circle-right"></i>&nbsp;</a>
+</div>
+</div>
+<div class="clearer"></div>
+<h2>NAME</h2>
+<p><b>curl</b> - Transfers data from or to a server, using one of the protocols: HTTP, HTTPS, FTP, FTPS, SCP, SFTP, TFTP, DICT, TELNET, LDAP or FILE. (To transfer multiple files use wget or FTP.)</p>
+<h2>SYNOPSIS</h2>
+<pre class="prettyprint">
+curl [options] [URL...]
+</pre>
+<h2>DESCRIPTION</h2>
+<p>Curl transfers data from or to a server, using one of the protocols: HTTP, HTTPS, FTP, FTPS, SCP, SFTP, TFTP, DICT, TELNET, LDAP or FILE. (To transfer multiple files use wget or FTP.).</p>
+<h2>OPTIONS</h2>
+<table class="src">
+<tr><th width="25%">Tag</th><th>Description</th></tr>
+<tr><td>url</td><td>One or multiple URLs that will be fetched in sequence. Multiple URLs or parts of URLs can be specified by writing part sets within braces as in:
+<pre class="prettyprint">
+http://site.{one,two,three}.com 
+or get sequences of alphanumeric series by using [] as in:
+ftp://ftp.numericals.com/file[1-100].txt
+ftp://ftp.numericals.com/file[001-100].txt (with leading zeros)
+ftp://ftp.letters.com/file[a-z].txt
+</pre>
+</td></tr>
+<tr><td>-A "agent string"<br/>--user-agent "agent string"</td><td>Specify the User-Agent string to send to the HTTP server. To encode blanks in the string, surround the string with single quote marks. This can also be set with -H, --header option. (HTTP)</td></tr>
+<tr><td>-b name=data<br/>--cookie name=data</td><td>Send the data to the HTTP server as a cookie. It is supposedly the data previously received from the server in a "Set-Cookie:" line. The data should be in the format  "NAME1=VALUE1; NAME2=VALUE2".</td></tr>
+<tr><td>-c filename<br/>--cookie-jar file name</td><td>Save cookies to file after a completed operation. Curl writes all cookies previously read from a specified file
+as well as all cookies received from remote server(s). If no cookies are known, no file will be written. To write to stdout, set the file name to a single dash,  "-".</td></tr>
+<tr><td>--compressed</td><td>Request a compressed response using one of the algorithms curl supports (gzip), and save  the  uncompressed  document. If this option  is  used  and  the server sends an unsupported encoding, curl will report an error.(HTTP)</td></tr>
+<tr><td>-d @file<br/>-d "string"<br/>--data "string"</td><td>Send the specified data in an (HTTP) POST request, in the same way that a web browser does. This  will pass the data using the content-type application/x-www-form-urlencoded.  Compare to -F, --form.</td></tr>
+<tr><td>-d, --data is the same as  --data-ascii.  To post data in pure binary, use --data-binary.</td><td>To URL-encode the value of a form field you may use --data-urlencode. Multiple date options will be merged together. Thus,  using  '-d  name=daniel  -d skill=lousy' would generate a post that looks like  'name=daniel&skill=lousy'. If the data starts with @, the rest should be a filename containing the data.</td></tr>
+<tr><td>-F name=@file<br/>-F name=content<br/>--form name=content</td><td>Emulate a filled-in form in which a user has pressed the submit button. This will POST data using the Content-Type  multipart/form-data according to  RFC 2388.  This enables uploading of binary files etc. If the data starts with @, the rest should be a filename. To just get the content part from a file, prefix the file name with the symbol &lt;. The difference between @ and &lt;  is that  @  makes a file get attached in the post as a file upload, while the &lt; makes a text field and gets the contents for that text field from a file.</td></tr>
+<tr><td>-k<br/>--insecure</td><td>This option explicitly allows curl to  perform  "insecure" SSL connections and transfers. All SSL connections are attempted in secure mode using the CA certificate  bundle  installed by  default. This  makes  all connections considered "insecure" fail unless -k, --insecure is used.(SSL).</td></tr>
+<tr><td>--limit-rate speed</td><td>Specify the maximum transfer rate.  This feature is useful if you have a limited pipe and you'd like your transfer not to use your entire bandwidth. The given speed is measured in bytes/second, unless a suffix  is appended. Appending 'k' or 'K' will count the number as kilobytes/sec, 'm' or M' megabytes, while 'g' or 'G' makes it gigabytes/sec. Eg: 200K, 3m, 1G.</td></tr>
+<tr><td>-m seconds<br/>--max-time seconds</td></tr>Maximum time that you allow the whole operation to take. This is useful for preventing your batch jobs from  hanging for hours due to slow networks or links going down.  See also the --connect-timeout option.</td></tr>
+<tr><td>-o file<br/>--output file</td><td>Write output to file instead of stdout. If you are using {} or [] to fetch multiple documents, you can use '#' followed by a number  in  the file specifier. That variable will be replaced with the current string for the URL being fetched. Like in:
+<pre class="prettyprint">
+curl http://{one,two}.site.com -o "file_#1.txt"
+</pre>
+<p>or use several variables like:</p>
+<pre class="prettyprint">
+curl http://{site,host}.host[1-5].com -o "#1_#2"
+</pre>
+<p>You may use this option as many times as the number of URLs you have. See also --create-dirs option to create the local directories dynamically. Specify '-' to force the output to stdout.</td></tr>
+<tr><td>-O<br/>--remote-name</td><td>Write output to a local file named like the remote file we get. (Only the file part of the remote file is used, the path is cut off.) The  remote file name to use for saving is extracted from the given URL, nothing else. Consequentially, the file will be saved in the  current  working directory.</td></tr>
+<tr><td>-s<br/>--silent</td><td>Silent or quiet mode. Don't show progress meter or error messages.</td></tr>
+<tr><td>--trace-ascii file</td><td>Enable a full trace dump of all  incoming  and  outgoing  data, including descriptive information, to the given output file. Use "-" as filename to have the output sent to stdout. This option overrides previous uses of -v, --verbose or --trace-ascii. If this option is used several times, the last one will be used.</td></tr>
+<tr><td>-T file<br/>--upload-file file</td><td>Transfer the specified local file to the remote  URL.  PUT If there is no file part in the specified URL, Curl will append the local file name. You must use a trailing / on the last directory to really prove to Curl that there is no file name or curl will think that the last directory name is the remote file name to use. Use the file name "-" to use stdin. You can specify one -T for each URL on the command line. Each -T + URL pair specifies what to upload and to where. curl also supports "globbing" of the -T argument, meaning that you can upload multiple files to a single URL
+like this:
+<pre class="prettyprint">
+curl -T "{file1,file2}" http://www.uploadtothissite.com
+</pre>
+<p>or even</p>
+<pre class="prettyprint">
+curl -T "img[1-1000].png" ftp://ftp.picturemania.com/upload/
+</pre>
+</td></tr>
+<tr><td>-I<br/>--head</td><td>Fetch the HTTP-header only! (HTTP/FTP/FILE)  HTTP-servers feature the  command  HEAD which this uses to get nothing but the header of a document. When used on an FTP or FILE file, curl displays the file size and last modification time only.</td></tr>
+<tr><td>-u user:password<br/>--user user:password</td><td>The username and password to use for server authentication. Overrides -n, --netrc and --netrc-optional. If you just give the user name (without entering a  colon) curl will prompt for a password. If you use an SSPI-enabled curl binary and do NTLM authentication, you can
+force curl to pick up the username and password from your environment by specifying a single colon with this option: "-u :". If this option is used several times, the last one will be used.</td></tr>
+<tr><td>-w<br/>--write-out format</td><td>Define extra info to display on stdout after a completed and successful operation. The format is a string that may contain plain text mixed with any number of variables. The format string can be specified  as "string", or to read from a file specify  "@filename"  to read the format from stdin use "@-". Various variables may be included in the format and will be substituted by curl (file size, ip address etc see man curl for details). variables are specified as %{variable_name}  Output a newline using \n, a carriage return with \r and a tab space with \t.</td></tr>
+<tr><td>-x host:port<br/>-x  [protocol://][user:password@]proxyhost[:port]<br/>--proxy [protocol://][user:password@]proxyhost[:port]</td><td>Use the  specified HTTP proxy. If the port number is not specified, it is assumed at port 1080.</td></tr>
+<tr><td>
+<tr><td>-H "name: value"<br/>--header "name: value"</td><td>Add Header when getting a web page. You may specify any number of extra headers.</td></tr>
+<tr><td>-H "name:"<br/>--header "name:"</td><td>Remove Header, remove an internal header. </td></tr>
+<tr><td>-L<br/>--location</td><td>Follow redirects if the server reports that the requested page has moved (indicated with a Location: header and a 3XX response code)</td></tr>
+<tr><td>-v<br/>--verbose</td><td>Make more verbose/talkative. Mostly useful for debugging.</td></tr>
+</table>
+<h2>EXAMPLES</h2>
+<p>To send your password file to the server, where 'password' is the name of the form-field to which /etc/passwd will be the input:</p>
+<pre class="result">
+$ curl -F password=@/etc/passwd www.mypasswords.com
+</pre>
+<p>To retrieve a web page and display in the terminal</p>
+<pre class="prettyprint">
+$ curl http://www.tutorialspoint.com
+</pre>
+<p>To retrieve a web page and display header information</p>
+<pre class="prettyprint">
+$ curl http://www.tutorialspoint.com -i
+</pre>
+<p>To retrieve a web page and save to a file.</p>
+<pre class="prettyprint">
+$ curl http://www.tutorialspoint.com -0 tutorialspoint.html
+</pre>
+<p>To retrieve a web page, or its redirected target</p>
+<pre class="prettyprint">
+$ curl www.tutorialspoint.com/unix/ 
+$ curl www.tutorialspoint.com/unix/ --location
+</pre>
+<p>To limit the rate of data transfer to 1 Kilobytes/sec</p>
+<pre class="prettyprint">
+$ curl http://www.tutorialspoint.com/unix/ --limit-rate 1k -o unix.html
+</pre>
+<p>To download via a proxy server</p>
+<pre class="prettyprint">
+$ curl -x proxy.example.com:3128 http://www.tutorialspoint.com/unix/
+</pre>
+<a href="/cgi-bin/printpage.cgi" target="_blank"><i class="icon icon-print big-font"></i> Print</a>
+</div>
+<div class="mui-container-fluid button-borders show" id="bottom_navigation">
+<div class="pre-btn">
+<a href="/unix_commands/cupsd.htm"><i class="fal fa-chevron-circle-left"></i> Previous Page</a>
+<a class="hide-on-mobile" href="javascript:printPage();"><i class="fa fa-print"></i> Print Page</a>
+</div>
+<div class="nxt-btn">
+<a href="/unix_commands/cut.htm">Next Page <i class="fal fa-chevron-circle-right"></i>&nbsp;</a>
+</div>
+</div>
+<div class="space-bottom" style="margin-bottom:20px;"></div>
+<div class="google-bottom-ads" id="google-bottom-ads">
+<div>Advertisements</div>
+<div>
+<div id="adp_bottom_ads"></div>
+<script>
+var adPos = document.getElementById('adp_bottom_ads');
+var mobile_ad_id = "a8a632a6-046e-4f5c-b25f-8bc82ac89fb2";
+var desktop_ad_id = "e7ddd6f7-1ab0-494a-bade-887daa4373a0";
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+var ad_id = window.innerWidth <= 768 ? mobile_ad_id : desktop_ad_id;
+adPos.innerHTML = '<div id="' + ad_id + '" class="_ap_apex_ad"></div>';
+adpushup.triggerAd(ad_id);
+});
+</script>
+</div>
+<div class="space-bottom"></div>
+</div>
+</div>
+<!-- Tutorial Content Ends Here -->
+<!-- Right Column Starts Here -->
+<div class="mui-col-md-2 google-right-ads" id="chapter-menu" style="display: none;">
+<input type="hidden" id="vu" name="vu" value=""/>
+<div class="space-top"></div>
+<div class="mui-panel">
+<ul class="paid-menu" id="div-right-menu">
+<li><a class="hide-on-mobile" href="javascript:printPage();" title="Print this page"><i class="fa fa-print"></i> Print</a></li>
+<li><a href="javascript:void(0)" class="add_notes" title="Add Custom Notes" onclick="add_notes();"><i class="fa fa-edit"></i>&nbsp;Add Notes</a></li>
+<li><a href="javascript:void(0)" class="clsPage text-bookmark" id="text-bookmark" title="Add Bookmark" onclick="text_bookmark()"><i class="fal fa-bookmark"></i>&nbsp;Bookmark this page </a></li>
+<li><a href="javascript:void(0);" id="report_error_popup" onclick="report_error_popup();" title="Report Error"><i class="fal fa-bell"></i>&nbsp;Report Error</a></li>
+<li><a href="javascript:void(0);" id="suggestion_popup" title="Give Suggestions" onclick="suggestion_popup();"><i class="fal fa-badge-check"></i>&nbsp;Suggestions</a></li>
+</ul>
+<div class="profile-my-notes" id="text_notes_div" style="display:none;">
+<textarea rows="10" class="text_notes" id="text_notes" name="text_notes" placeholder="Enter your custom notes..."></textarea>
+<br>
+<a href="javascript:void(0);" id="submit_text_notes" class="butn-save" onclick="submit_text_notes();"> Save</a>
+<a href="javascript:void(0);" class="pop-no butn-cancel" onclick="notesClose();"> Close</a>
+<p class="notes_msg"  ></p>
+</div>
+<div class="bottom-menu">
+<button class="tp-btn"><i class="fal fa-box-up"></i> <a href="/videotutorials/dashboard.php">Dashboard</a></button>
+<button class="tp-btn"><i class="fal fa-sign-out-alt"></i> <a href="/videotutorials/userlogout.php">Logout</a></button>
+</div>
+</div>
+</div>
+<div class="mui-col-md-2 google-right-ads" id="google-right-ads">
+<div class="space-top"></div>
+<div class="google-right-ad" style="margin: 0px auto !important;margin-top:5px;min-height:250px!important">
+<div id="f0f6cff6-393d-4170-b63a-d9ff06ca9f25" class="_ap_apex_ad">
+<script>
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+adpushup.triggerAd("f0f6cff6-393d-4170-b63a-d9ff06ca9f25");
+});
+</script>
+</div>
+</div>
+<div class="google-right-ad" style="margin-top:16px;min-height:250px!important">
+<div id="5c0affd5-724a-475c-bfcd-cecbc7660c36" class="_ap_apex_ad">
+<script>
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+adpushup.triggerAd("5c0affd5-724a-475c-bfcd-cecbc7660c36");
+});
+</script>
+</div>
+</div>
+<div class="google-right-ad" style="margin-top:16px;margin-bottom:15px;min-height:600px!important">
+<div id="8f8814c2-d64c-4d26-9cb9-543653c0b48f" class="_ap_apex_ad">
+<script>
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+adpushup.triggerAd("8f8814c2-d64c-4d26-9cb9-543653c0b48f");
+});
+</script>
+</div>
+</div>
+<div class="space-bottom" style="margin-bottom:15px;"></div>
+</div>
+<!-- Right Column Ends Here -->
+</div>
+</div>
+<div class="clear"></div>
+<footer id="footer">
+<div class="mui--text-center">
+<div class="mui--text-caption mui--text-light">
+<a href="/index.htm" class="logo"><img class="img-responsive" src="/images/logo-black.png" alt="Tutorials Point" title="Tutorials Point"></a>
+</div>
+<ul class="mui-list--inline mui--text-body2 mui--text-light">
+<li><a href="/about/index.htm"><i class="fal fa-globe"></i> About us</a></li>
+<li><a href="/about/return_refund_policy.htm"> <i class="fal fa-asterisk"></i> Refund Policy</a></li>
+<li><a href="/about/about_terms_of_use.htm"><i class="fal fa-asterisk"></i> Terms of use</a></li>
+<li><a href="/about/about_privacy.htm"> <i class="fal fa-shield-check"></i> Privacy Policy</a></li>
+<li><a href="/about/faq.htm"><i class="fal fa-question-circle"></i> FAQ's</a></li>
+<li><a href="/about/contact_us.htm"><i class="fal fa-map-marker-alt"></i> Contact</a></li>
+</ul>
+<div class="mui--text-caption mui--text-light bottom-copyright-text">&copy; Copyright 2021. All Rights Reserved.</div>
+</div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-232293-6"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-232293-6');
+</script>
+<script src="https://www.tutorialspoint.com/videotutorials/js/text_menu.js?v=1"></script>
+<script>
+$(document).ready(function (){
+    var cval = readCookie('subscription_purchased');
+    if(cval == '1'){
+          // logged in and purchased subscription.
+          $('#google-right-ads').remove();
+          $('#adp1').remove();
+          $('#adp2').remove();
+          $('#stickyparent').remove();
+          $('#google-top-ads').remove();
+          $('#adp_top_ads').remove();
+          $('#google-bottom-ads').remove();
+          $('.tutorial-content hr').remove();
+          $('.login').remove();
+          $('#chapter-menu').show();
+          $('.content h1').css("border-bottom", "none");
+          $('.google-right-ads').css("padding-right", "0px");
+          $('.tutorial-content').css("border-radius", "10px");
+          $('#chapter-menu .mui-panel').css("border-radius", "10px");
+     }
+});
+</script>
+</footer>
+</body>
+</html>

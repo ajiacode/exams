@@ -1,0 +1,19 @@
+﻿Date,Company,Customer name A,Email A,IP address A,Customer ID A,Customer name B,Email B,IP address B,Customer ID B
+12/10/2021,apple,Michael Shoffer,mike@apple.com,172.24.80.1,AP23,Tassil Shoffer,mike@apple.com,172.24.80.1,AP23
+13/10/2021,Apple,Telvia Anaim,telvia@apple.com,172.24.80.2,AP12,Albus Anaim,telvia@apple.com,172.24.80.2,AP12
+14/10/2021,microsoft,Chotus Choda,chotus@microsoft.com,172.24.80.3,MS132,Tinker Choda,chotus@microsoft.com,172.24.80.3,MS132
+15/10/2021,microsoft,Chimchi kimchi,chimchi@microsoft.com,172.24.80.4,MS594,Belivio kimchi,chimchi@microsoft.com,172.24.80.4,MS594
+16/10/2021,azure,lennox lamba,lennox@azure.com,172.24.80.5,AZ009,Bryan lamba,lennox@azure.com,172.24.80.5,AZ009
+17/10/2021,azure,mandala bella,mandala@azure.com,172.24.80.6,AZ001,Mubusa bella,mandala@azure.com,172.24.80.6,AZ001
+18/10/2021,paypal,trinity teki,trinity@paypal.com,172.24.80.7,PP3123,Windheok teki,trinity@paypal.com,172.24.80.7,PP3123
+19/10/2021,paypal,forgo argo,forgo@paypal.com,172.24.80.8,PP3542,Cape argo,forgo@paypal.com,172.24.80.8,PP3542
+20/10/2021,paypal,temper trap,temper@paypal.com,172.24.80.9,PP5443,Cassey trap,temper@paypal.com,172.24.80.9,PP5443
+21/10/2021,ebay,car sales,car@ebay.com.au,172.24.80.10,EB5296,train sales,car@ebay.com.au,172.24.80.10,EB5296
+22/10/2021,ebay,train sales,train@ebay.com.au,172.24.80.11,EB4343,car sales,train@ebay.com.au,172.24.80.11,EB4343
+23/10/2021,ebay,sales sales,sales@ebay.com.au,172.24.80.12,EB232,ebay sales,sales@ebay.com.au,172.24.80.12,EB232
+24/10/2021,ebay,world sales,worldsale@ebay.com,172.24.80.13,EB4343,global sales,worldsale@ebay.com,172.24.80.13,EB4343
+25/10/2021,riotinto,mining rio,mining@riotinto.com.au,172.24.80.14,RT2442,spain rio,mining@riotinto.com.au,172.24.80.14,RT2442
+26/10/2021,riotinto,data rio,data_science@riotinto.com,172.24.80.15,RT2312,data rio,data_science@riotinto.com,172.24.80.15,RT2312
+27/10/2021,rio tinto,hr rio,hr@riotinto.com.au,172.24.80.16,RT54892,hr rio,hr@riotinto.com.au,172.24.80.16,RT54892
+28/10/2021,apple,ipad apple,ipad@apple.com,172.24.80.17,AP95,ipad apple,ipad@apple.com,172.24.80.17,AP95
+29/10/2021,microsoft,surface microsoft,surface@microsoft.com,172.24.80.18,MS4324,surface microsoft,surface@microsoft.com,172.24.80.18,MS4324
